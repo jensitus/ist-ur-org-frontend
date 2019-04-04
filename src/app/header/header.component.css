@@ -1,0 +1,40 @@
+.layout-topbar{
+  height: 78px;
+  background-color: #3F51B5;
+  box-shadow: 0 2px 5px 0 rgba(0,0,0,.3);
+}
+
+.logo a {
+  color: white;
+  font-size: 20px;
+  line-height: 70px;
+  font-weight: 600;
+}
+
+.topbar-menu ul {
+  list-style: none;
+  overflow: hidden;
+  margin: 0;
+}
+
+.search{
+  width: 250px;
+  margin-top: 15px;
+  line-height: 25px;
+}
+
+.topbar-menu li a{
+  float: left;
+  color: white;
+  min-width: 120px;
+  line-height: 70px;
+  font-size: 16px;
+  text-decoration: none;
+  text-align: center;
+}
+
+.topbar-menu li a:hover{
+  background-color: #485dc4;
+}
+
+
