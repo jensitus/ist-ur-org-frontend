@@ -37,7 +37,7 @@
   background-color: #485dc4;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 824px) {
   .search{
     line-height: 25px;
     margin-top: 15px;
@@ -47,7 +47,7 @@
     display: none;
   }
 }
-@media (max-width: 768px) {
+@media (max-width: 824px) {
   .search{
     display: none;
   }
