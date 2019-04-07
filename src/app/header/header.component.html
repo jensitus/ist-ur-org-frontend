@@ -1,24 +1,19 @@
 <div class="layout-topbar">
-  <div class="p-grid p-justify-center">
-    <div class=p-col-10>
-      <div class="p-grid p-justify-between">
-        <div class="p-col-3 logo">
-          <a routerLink="" >ist - ur . org</a>
+  <div class="content">
+    <div class="p-grid p-justify-between">
+      <div class="p-col-fixed logo">
+        <a routerLink="" >ist - ur . org</a>
+      </div>
+      <div class="p-col">
+        <div class="topbar-menu">
+          <ul>
+            <li><input pInputText type="text" class="search" placeholder="Search user or content"></li>
+            <li><a routerLink="login">LOGIN</a></li>
+            <li><a routerLink="register">REGISTER</a></li>
+          </ul>
         </div>
-        <div class="p-col">
-          <div class="p-grid" style="text-align: right">
-            <div class="p-col">
-              <input pInputText type="text" class="search" placeholder="Search user or content">
-            </div>
-            <div class="p-col-3">
-              <div class="topbar-menu">
-                <ul>
-                  <li><a routerLink="login">LOGIN</a></li>
-                  <li><a routerLink="register">REGISTER</a></li>
-                </ul>
-              </div>
-            </div>
-          </div>
+        <div class="hamburger-menu">
+          <button type="button" pButton icon="pi pi-list" (click)="openMobileNavbar()"></button>
         </div>
       </div>
     </div>

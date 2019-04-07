@@ -1,40 +1,65 @@
 .layout-topbar{
-  height: 78px;
+  height: 80px;
   background-color: #3F51B5;
   box-shadow: 0 2px 5px 0 rgba(0,0,0,.3);
 }
 
-.logo a {
+.layout-topbar a{
   color: white;
+}
+
+.logo a {
   font-size: 20px;
-  line-height: 70px;
   font-weight: 600;
+  width: 100px;
+  line-height: 70px;
 }
 
 .topbar-menu ul {
-  list-style: none;
-  overflow: hidden;
+  float: right;
   margin: 0;
 }
 
-.search{
-  width: 250px;
-  margin-top: 15px;
-  line-height: 25px;
+.topbar-menu ul li{
+  float: left;
+  min-width: 120px;
+  width: auto;
+  font-size: 16px;
+  text-align: center;
+  list-style: none;
 }
 
 .topbar-menu li a{
-  float: left;
-  color: white;
-  min-width: 120px;
   line-height: 70px;
-  font-size: 16px;
-  text-decoration: none;
-  text-align: center;
+  display: block;
 }
-
 .topbar-menu li a:hover{
   background-color: #485dc4;
 }
 
+@media (min-width: 768px) {
+  .search{
+    line-height: 25px;
+    margin-top: 15px;
+    width: 250px;
+  }
+  .hamburger-menu {
+    display: none;
+  }
+}
+@media (max-width: 768px) {
+  .search{
+    display: none;
+  }
+  .topbar-menu {
+    display: none;
+  }
 
+/*   ::ng-deep button.ui-button {
+    background-color: #3f51b5;
+    border: 0px;
+    font-size: 20px;
+    float: right;
+    line-height: 20px;
+  } */
+}

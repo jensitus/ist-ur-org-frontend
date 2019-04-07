@@ -4,3 +4,9 @@ html, body{
   padding: 0;
   font-family: "Open Sans","Helvetica Neue",sans-serif;
 }
+a { text-decoration: none}
+.content {
+  width: 80%;
+  margin: 0 auto;
+  height: 100%;
+}

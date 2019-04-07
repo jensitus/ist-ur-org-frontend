@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppComponent } from './app.component';
 import { RouterModule, Routes} from '@angular/router';
@@ -9,6 +10,8 @@ import { ButtonModule } from 'primeng/button';
 import { HeaderComponent } from './header/header.component';
 import { AppRoutingModule } from './app-routing.module';
 import { InputTextModule } from 'primeng/inputtext';
+import { MenubarModule } from 'primeng/menubar';
+import { SlideMenuModule } from 'primeng/slidemenu';
 
 const app_routes: Routes = [
   {path: 'home', component: HomeComponent},
@@ -27,7 +30,10 @@ const app_routes: Routes = [
     ProgressSpinnerModule,
     ButtonModule,
     AppRoutingModule,
-    InputTextModule
+    InputTextModule,
+    MenubarModule,
+    SlideMenuModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
