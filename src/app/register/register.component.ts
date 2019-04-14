@@ -1,3 +1,4 @@
+import { UserService } from './../services/user.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +8,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RegisterComponent implements OnInit {
 
-  constructor() { }
+  login: string;
+  email: string;
+  password: string;
+  passwordRepeat: string;
+
+  constructor(private userService: UserService) { }
 
   ngOnInit() {
+  }
+
+  onRegister(): void{
+    this.userService.register(this.login, this.password, this.email);
   }
 
 }

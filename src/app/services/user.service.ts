@@ -6,4 +6,8 @@ import { Injectable } from '@angular/core';
 export class UserService {
 
   constructor() { }
+
+  register(login: string, pw: string, email: string){
+    return null;
+  }
 }

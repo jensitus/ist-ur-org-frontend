@@ -1,3 +1,28 @@
-<p>
-  register works!
-</p>
+<div class="p-grid p-align-center" style="height: 500px;">
+    <div class="p-col-4 p-offset-4">
+      <h3>Registration</h3>
+      <form #registerForm="ngForm" (ngSubmit)="onRegister()">
+          <span class="ui-float-label">
+            <input id="float-input" [(ngModel)]="login" name="login" type="text" required pInputText style="width: 100%">
+            <label for="float-input">Login</label>
+          </span>
+          <br>
+          <span class="ui-float-label">
+            <input id="float-input" [(ngModel)]="email" name="email" type="text" required pInputText style="width: 100%">
+            <label for="float-input">Email</label>
+          </span>
+          <br>
+          <span class="ui-float-label">
+            <input id="float-input" type="password" [(ngModel)]="password" name="password" required style="width: 100%" pInputText>
+            <label for="float-input">Password</label>
+          </span>
+          <br>
+          <span class="ui-float-label">
+            <input id="float-input" type="password" [(ngModel)]="passwordRepeat" name="passwordrepeat" required style="width: 100%" pInputText>
+            <label for="float-input">Repeat Password</label>
+          </span>
+          <br>
+          <p-button type="submit" label="Register" [disabled]="!registerForm.valid"></p-button>
+        </form>
+    </div>
+  </div>
