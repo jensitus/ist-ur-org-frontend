@@ -21,7 +21,9 @@ export class HeaderComponent implements OnInit {
           label: 'Register',
           icon: 'pi pi-user-plus'
       }
-  ];
+    ];
   }
+
+  openMobileNavbar(){}
 
 }
