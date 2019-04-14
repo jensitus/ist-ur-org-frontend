@@ -12,6 +12,10 @@ import { AppRoutingModule } from './app-routing.module';
 import { InputTextModule } from 'primeng/inputtext';
 import { MenubarModule } from 'primeng/menubar';
 import { SlideMenuModule } from 'primeng/slidemenu';
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
+import { CheckboxModule } from 'primeng/checkbox';
+import { FormsModule } from '@angular/forms';
 
 const app_routes: Routes = [
   {path: 'home', component: HomeComponent},
@@ -22,7 +26,9 @@ const app_routes: Routes = [
   declarations: [
     AppComponent,
     HomeComponent,
-    HeaderComponent
+    HeaderComponent,
+    LoginComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
@@ -33,7 +39,9 @@ const app_routes: Routes = [
     InputTextModule,
     MenubarModule,
     SlideMenuModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    CheckboxModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

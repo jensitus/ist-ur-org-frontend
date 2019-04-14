@@ -1,0 +1,20 @@
+<div class="p-grid p-align-center" style="height: 500px;">
+  <div class="p-col-4 p-offset-4">
+    <h3>Login</h3>
+    <form #loginForm="ngForm" (ngSubmit)="onLogin()">
+        <span class="ui-float-label">
+          <input id="float-input" [(ngModel)]="email" name="email" type="text" required pInputText style="width: 100%">
+          <label for="float-input">Email</label>
+        </span>
+        <br>
+        <span class="ui-float-label">
+          <input id="float-input" type="password" [(ngModel)]="password" name="password" required style="width: 100%" pInputText>
+          <label for="float-input">Password</label>
+        </span>
+        <br>
+        Remember Me? <p-checkbox [(ngModel)]="rememberMe" binary="true" name="rememberMe"></p-checkbox>
+        <br>
+        <p-button type="submit" label="Login" [disabled]="!loginForm.valid"></p-button>
+      </form>
+  </div>
+</div>
