@@ -1,28 +1,30 @@
 <div class="p-grid p-align-center" style="height: 500px;">
     <div class="p-col-4 p-offset-4">
       <h3>Registration</h3>
-      <form #registerForm="ngForm" (ngSubmit)="onRegister()">
+      <form [formGroup]="registerForm" (ngSubmit)="onRegister()">
           <span class="ui-float-label">
-            <input id="float-input" [(ngModel)]="login" name="login" type="text" required pInputText style="width: 100%">
-            <label for="float-input">Login</label>
+            <input id="float-input-username" formControlName="username" type="text" required pInputText style="width: 100%">
+            <label for="float-input-username">username</label>
           </span>
           <br>
           <span class="ui-float-label">
-            <input id="float-input" [(ngModel)]="email" name="email" type="text" required pInputText style="width: 100%">
-            <label for="float-input">Email</label>
+            <input id="float-input-email" formControlName="email" name="email" type="text" required pInputText style="width: 100%">
+            <label for="float-input-email">Email</label>
           </span>
           <br>
           <span class="ui-float-label">
-            <input id="float-input" type="password" [(ngModel)]="password" name="password" required style="width: 100%" pInputText>
-            <label for="float-input">Password</label>
+            <input id="float-input-password" type="password" formControlName="password" name="password" required style="width: 100%" pInputText>
+            <label for="float-input-password">Password</label>
           </span>
           <br>
-          <span class="ui-float-label">
-            <input id="float-input" type="password" [(ngModel)]="passwordRepeat" name="passwordrepeat" required style="width: 100%" pInputText>
-            <label for="float-input">Repeat Password</label>
-          </span>
+        <img *ngIf="loading"
+             src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA=="/>
+<!--          <span class="ui-float-label">
+            <input id="float-input-password-repeat" type="password" formControlName="passwordRepeat" name="passwordrepeat" required style="width: 100%" pInputText>
+            <label for="float-input-password-repeat">Repeat Password</label>
+          </span>-->
           <br>
-          <p-button type="submit" label="Register" [disabled]="!registerForm.valid"></p-button>
+          <p-button type="submit" label="Register"></p-button>
         </form>
     </div>
   </div>
