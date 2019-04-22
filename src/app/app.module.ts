@@ -15,7 +15,9 @@ import { SlideMenuModule } from 'primeng/slidemenu';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { CheckboxModule } from 'primeng/checkbox';
-import { FormsModule } from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {UserService} from './services/user.service';
+import {HttpClientModule} from '@angular/common/http';
 
 const app_routes: Routes = [
   {path: 'home', component: HomeComponent},
@@ -41,9 +43,13 @@ const app_routes: Routes = [
     SlideMenuModule,
     BrowserAnimationsModule,
     CheckboxModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule,
+    ReactiveFormsModule
   ],
-  providers: [],
+  providers: [
+    UserService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
