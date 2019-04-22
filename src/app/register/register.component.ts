@@ -44,10 +44,11 @@ export class RegisterComponent implements OnInit {
     this.loading = true;
     console.log(this.registerForm);
     this.userService.register(this.registerForm.value).pipe(first()).subscribe(data => {
-        console.log(data);
+        console.log('data:', data);
         this.loading = false;
+        this.router.navigate(['/login']);
       }, error => {
-        console.log(error);
+        console.log('error:', error);
         this.loading = false;
       }
     );
