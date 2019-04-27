@@ -18,11 +18,8 @@ import { CheckboxModule } from 'primeng/checkbox';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {UserService} from './services/user.service';
 import {HttpClientModule} from '@angular/common/http';
-
-const app_routes: Routes = [
-  {path: 'home', component: HomeComponent},
-  {path: '', redirectTo: 'home', pathMatch: 'full'}
-];
+import { ResetPasswordComponent } from './reset-password/reset-password.component';
+import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 
 @NgModule({
   declarations: [
@@ -30,11 +27,12 @@ const app_routes: Routes = [
     HomeComponent,
     HeaderComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    ResetPasswordComponent,
+    ForgotPasswordComponent
   ],
   imports: [
     BrowserModule,
-    RouterModule.forRoot(app_routes, {enableTracing: true}),
     ProgressSpinnerModule,
     ButtonModule,
     AppRoutingModule,

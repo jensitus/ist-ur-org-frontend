@@ -8,12 +8,26 @@ import {User} from '../model/user';
 })
 export class UserService {
 
+  httpReturnValue: any;
+
   apiUrl = environment.api_url;
 
   constructor(private http: HttpClient) { }
 
   register(user: User) {
     return this.http.post(this.apiUrl + '/api/auth/signup', user);
+  }
+
+  forgotPassword(email: string) {
+    return this.http.post(this.apiUrl + '/api/auth/reset_password', email, {responseType: 'text'});
+  }
+
+  checkTokenExpired(token: string, email: string) {
+    return this.httpReturnValue = this.http.get(`${this.apiUrl}/api/auth/reset_password/${token}?email=` + email, {responseType: 'text'});
+  }
+
+  resetPassword(user: User, token: string, email: string) {
+    return this.http.put(this.apiUrl + '/api/auth/reset_password/' + token + '?email=' + email, user, {responseType: 'text'});
   }
 
 }
