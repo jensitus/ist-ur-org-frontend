@@ -1,3 +1,5 @@
+import { PostService } from './services/micropost.service';
+import { Micropost } from './model/micropost';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -29,7 +31,8 @@ import { ForgotPasswordComponent } from './forgot-password/forgot-password.compo
     LoginComponent,
     RegisterComponent,
     ResetPasswordComponent,
-    ForgotPasswordComponent
+    ForgotPasswordComponent,
+    Micropost
   ],
   imports: [
     BrowserModule,
@@ -46,7 +49,8 @@ import { ForgotPasswordComponent } from './forgot-password/forgot-password.compo
     ReactiveFormsModule
   ],
   providers: [
-    UserService
+    UserService,
+    PostService
   ],
   bootstrap: [AppComponent]
 })
