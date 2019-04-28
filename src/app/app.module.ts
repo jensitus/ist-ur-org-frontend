@@ -17,9 +17,10 @@ import { RegisterComponent } from './register/register.component';
 import { CheckboxModule } from 'primeng/checkbox';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {UserService} from './services/user.service';
-import {HttpClientModule} from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
+import {JwtInterceptor} from './helper/jwt.interceptor';
 
 @NgModule({
   declarations: [
@@ -46,7 +47,8 @@ import { ForgotPasswordComponent } from './forgot-password/forgot-password.compo
     ReactiveFormsModule
   ],
   providers: [
-    UserService
+    UserService,
+    {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true}
   ],
   bootstrap: [AppComponent]
 })
