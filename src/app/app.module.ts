@@ -1,3 +1,5 @@
+import { PostService } from './services/micropost.service';
+import { Micropost } from './model/micropost';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -30,7 +32,8 @@ import {JwtInterceptor} from './helper/jwt.interceptor';
     LoginComponent,
     RegisterComponent,
     ResetPasswordComponent,
-    ForgotPasswordComponent
+    ForgotPasswordComponent,
+    Micropost
   ],
   imports: [
     BrowserModule,
@@ -48,7 +51,8 @@ import {JwtInterceptor} from './helper/jwt.interceptor';
   ],
   providers: [
     UserService,
-    {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true}
+    {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true},
+    PostService
   ],
   bootstrap: [AppComponent]
 })
