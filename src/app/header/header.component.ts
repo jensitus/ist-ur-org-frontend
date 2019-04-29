@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MenuItem } from 'primeng/components/common/menuitem';
+import {User} from '../model/user';
 
 @Component({
   selector: 'app-header',
@@ -8,10 +9,13 @@ import { MenuItem } from 'primeng/components/common/menuitem';
 })
 export class HeaderComponent implements OnInit {
 
+  currentUser: User;
+
   constructor() { }
   public menuItems: MenuItem[];
 
   ngOnInit() {
+    this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
     this.menuItems = [
       {
           label: 'Login',
@@ -24,6 +28,6 @@ export class HeaderComponent implements OnInit {
     ];
   }
 
-  openMobileNavbar(){}
+  openMobileNavbar() {}
 
 }

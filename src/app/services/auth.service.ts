@@ -15,4 +15,8 @@ export class AuthService {
   public login(user: User) {
     return this.http.post(this.apiUrl + '/api/auth/signin', user);
   }
+
+  logout() {
+    localStorage.removeItem('currentUser');
+  }
 }

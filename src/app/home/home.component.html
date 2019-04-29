@@ -1,5 +1,7 @@
 <div class="p-grid">
   <div class="p-col">
-    home works!
+    <div *ngIf="currentUser != null">
+      <h3>Hi {{currentUser.username}}</h3>
+    </div>
   </div>
 </div>

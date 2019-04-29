@@ -32,8 +32,7 @@ import {JwtInterceptor} from './helper/jwt.interceptor';
     LoginComponent,
     RegisterComponent,
     ResetPasswordComponent,
-    ForgotPasswordComponent,
-    Micropost
+    ForgotPasswordComponent
   ],
   imports: [
     BrowserModule,
