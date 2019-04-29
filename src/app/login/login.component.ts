@@ -1,5 +1,6 @@
 import { AuthService } from './../services/auth.service';
 import { Component, OnInit } from '@angular/core';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -16,12 +17,13 @@ export class LoginComponent implements OnInit {
   data: any;
   u: any;
 
-  constructor(private authService: AuthService) { }
+  constructor(
+    private authService: AuthService,
+    private router: Router
+  ) { }
 
   ngOnInit() {
-
-    // here is nothing to do
-
+    this.authService.logout();
   }
 
   onLogin() {
@@ -31,14 +33,9 @@ export class LoginComponent implements OnInit {
     };
     this.authService.login(this.user).subscribe(data => {
       this.data = data;
-      console.log('data: ', data);
-      this.u = {
-        username: this.username,
-        access_token: this.data.accessToken,
-        token_type: this.data.tokeType
-      };
-      console.log('u', this.u);
-      localStorage.setItem('currentUser', JSON.stringify(this.u));
+      console.log('data: ', this.data);
+      localStorage.setItem('currentUser', JSON.stringify(this.data.userDto));
+      this.router.navigate(['/home']);
     }, error => {
       console.log(error);
     });
