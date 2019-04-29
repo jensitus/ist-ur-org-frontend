@@ -3,5 +3,10 @@
     <div *ngIf="currentUser != null">
       <h3>Hi {{currentUser.username}}</h3>
     </div>
+    <div *ngIf="currentUser == null">
+      <h3>Welcome to ist-ur.org</h3>
+      <p><a [routerLink]="['/login']">Login</a></p>
+      <p><a [routerLink]="['/register']">Register</a></p>
+    </div>
   </div>
 </div>
