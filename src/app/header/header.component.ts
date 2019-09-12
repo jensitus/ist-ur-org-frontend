@@ -31,12 +31,12 @@ export class HeaderComponent implements OnInit {
           icon: 'pi pi-user-plus'
       }
     ];
-    this.afterLogin();
+    this.getNoticedAfterLoginOrLogout();
   }
 
   openMobileNavbar() {}
 
-  afterLogin() {
+  private getNoticedAfterLoginOrLogout() {
     this.behaviorService.loginSubject.subscribe(res => {
       this.reload = res;
       if (this.reload) {
@@ -45,7 +45,7 @@ export class HeaderComponent implements OnInit {
     });
   }
 
-  getCurrentUser() {
+  private getCurrentUser() {
     this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
   }
 
