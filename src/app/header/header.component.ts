@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MenuItem } from 'primeng/components/common/menuitem';
 import {User} from '../model/user';
+import {BehaviorService} from '../services/behavior.service';
 
 @Component({
   selector: 'app-header',
@@ -10,12 +11,16 @@ import {User} from '../model/user';
 export class HeaderComponent implements OnInit {
 
   currentUser: User;
+  reload: boolean;
 
-  constructor() { }
+
+  constructor(
+    private behaviorService: BehaviorService
+  ) { }
   public menuItems: MenuItem[];
 
   ngOnInit() {
-    this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    this.getCurrentUser();
     this.menuItems = [
       {
           label: 'Login',
@@ -26,8 +31,23 @@ export class HeaderComponent implements OnInit {
           icon: 'pi pi-user-plus'
       }
     ];
+    this.getNoticedAfterLoginOrLogout();
   }
 
   openMobileNavbar() {}
+
+  private getNoticedAfterLoginOrLogout() {
+    this.behaviorService.loginSubject.subscribe(res => {
+      this.reload = res;
+      if (this.reload) {
+        this.getCurrentUser();
+      }
+    });
+  }
+
+  private getCurrentUser() {
+    this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
+  }
+
 
 }
