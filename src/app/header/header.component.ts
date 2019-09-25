@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { MenuItem } from 'primeng/components/common/menuitem';
 import {User} from '../model/user';
 import {BehaviorService} from '../services/behavior.service';
 
@@ -17,11 +16,11 @@ export class HeaderComponent implements OnInit {
   constructor(
     private behaviorService: BehaviorService
   ) { }
-  public menuItems: MenuItem[];
+  /* public menuItems: MenuItem[]; */
 
   ngOnInit() {
     this.getCurrentUser();
-    this.menuItems = [
+   /*  this.menuItems = [
       {
           label: 'Login',
           icon: 'pi pi-sign-in'
@@ -30,7 +29,7 @@ export class HeaderComponent implements OnInit {
           label: 'Register',
           icon: 'pi pi-user-plus'
       }
-    ];
+    ]; */
     this.getNoticedAfterLoginOrLogout();
   }
 
