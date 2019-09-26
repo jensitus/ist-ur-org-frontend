@@ -1,4 +1,4 @@
-<div class="p-grid p-align-center" style="height: 500px;">
+<div style="height: 500px;">
   <div class="p-col-4 p-offset-4">
     <h3>Login</h3>
     <form #loginForm="ngForm" (ngSubmit)="onLogin()">
@@ -12,9 +12,9 @@
           <label for="float-input-password">Password</label>
         </span>
         <br>
-        Remember Me? <p-checkbox [(ngModel)]="rememberMe" binary="true" name="rememberMe"></p-checkbox>
+        Remember Me? <!-- <p-checkbox [(ngModel)]="rememberMe" binary="true" name="rememberMe"></p-checkbox> -->
         <br>
-        <p-button type="submit" label="Login" [disabled]="!loginForm.valid"></p-button>
+        <button type="submit" label="Login" [disabled]="!loginForm.valid"></button>
       </form>
     <br>
     <a [routerLink]="['/forgot-password']" class="btn btn-link">Forgot Password</a>
