@@ -15,6 +15,8 @@ import { ResetPasswordComponent } from './reset-password/reset-password.componen
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { JwtInterceptor} from './helper/jwt.interceptor';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import {AuthService} from './services/auth.service';
+import {HttpClient, HttpClientModule} from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -32,12 +34,14 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     BrowserAnimationsModule,
     FormsModule,
     ReactiveFormsModule,
-    NgbModule
+    NgbModule,
+    HttpClientModule
   ],
   providers: [
     UserService,
     /* {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true}, */
-    PostService
+    PostService,
+    AuthService
   ],
   bootstrap: [AppComponent]
 })

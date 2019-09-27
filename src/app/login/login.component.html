@@ -1,23 +1,24 @@
-<div style="height: 500px;">
-  <div class="p-col-4 p-offset-4">
-    <h3>Login</h3>
-    <form #loginForm="ngForm" (ngSubmit)="onLogin()">
-        <span class="ui-float-label">
-          <input id="float-input-username" [(ngModel)]="username" name="username" type="text" required pInputText style="width: 100%">
-          <label for="float-input-username">username</label>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-5">
+      <h4>Login</h4>
+      <form #loginForm="ngForm" (ngSubmit)="onLogin()">
+        <span>
+          <input id="float-input-username" class="form-control" [(ngModel)]="username" name="username" type="text">
+          <label>username</label>
         </span>
         <br>
-        <span class="ui-float-label">
-          <input id="float-input-password" type="password" [(ngModel)]="password" name="password" required style="width: 100%" pInputText>
-          <label for="float-input-password">Password</label>
+        <span>
+          <input id="float-input-password" class="form-control" type="password" [(ngModel)]="password" name="password">
+          <label>Password</label>
         </span>
         <br>
         Remember Me? <!-- <p-checkbox [(ngModel)]="rememberMe" binary="true" name="rememberMe"></p-checkbox> -->
         <br>
-        <button type="submit" label="Login" [disabled]="!loginForm.valid"></button>
+        <button type="submit" class="btn btn-outline-danger" [disabled]="!loginForm.valid">Login</button>
       </form>
-    <br>
-    <a [routerLink]="['/forgot-password']" class="btn btn-link">Forgot Password</a>
+      <br>
+      <a [routerLink]="['/forgot-password']" class="btn btn-link">Forgot Password</a>
+    </div>
   </div>
-
 </div>
