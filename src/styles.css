@@ -1,6 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 
 @import "assets/css/bootstrap.min.css";
+@import "assets/css/customspacing.css";
 
 html, body{
   margin: 0;

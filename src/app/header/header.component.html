@@ -1,5 +1,5 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="#">ist - ur . org</a>
+<nav class="navbar fixed-top navbar-expand-sm navbar-dark bg-dark">
+  <a class="navbar-brand" routerLink="home">ist - ur . org</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -7,10 +7,10 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
-        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+        <a class="nav-link" routerLink="home">Home <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Link</a>
+        <a class="nav-link" routerLink="">Link</a>
       </li>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -49,31 +49,4 @@
     </ul>
   </div>
 </nav>
-<!--<nav class="navbar fixed-top navbar-light bg-light">
-  <a class="navbar-brand">ist -ur .org</a>
-    <div>
-      <div class="p-col">
-        <div class="topbar-menu" *ngIf="currentUser == null">
-          <ul>
-            <li><input pInputText type="text" class="search" placeholder="Search user or content"></li>
-            <li><a routerLink="login">LOGIN</a></li>
-            <li><a routerLink="register">REGISTER</a></li>
-          </ul>
-        </div>
-        <div class="topbar-menu" *ngIf="currentUser != null">
-          <ul>
-            <li><input pInputText type="text" class="search" placeholder="Search user or content"></li>
-            <li><a routerLink="">{{currentUser.username}}</a></li>
-            <li><a routerLink="login">logout</a></li>
-          </ul>
-        </div>
-      </div>
-      <div class="p-col-2">
-        <div class="hamburger-menu">
-          <button type="button" pButton icon="pi pi-2x pi-list" (click)="openMobileNavbar()" style="font-size: 18px"></button>
-        </div>
-      </div>
-    </div>
-  </a>
-</nav>
--->
+<div class="mt-7"></div>
