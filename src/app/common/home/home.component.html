@@ -2,12 +2,31 @@
   <div class="row">
     <div class="col">
       <div *ngIf="currentUser != null">
-        <h3>Hi {{currentUser.username}}</h3>
+        <div>
+          <h3>Hi {{currentUser.username}}</h3>
+        </div>
+        <div>
+          <app-create-posting></app-create-posting>
+        </div>
       </div>
       <div *ngIf="currentUser == null">
         <h3>Welcome to ist-ur.org</h3>
         <p><a [routerLink]="['/login']">Login</a></p>
         <p><a [routerLink]="['/register']">Register</a></p>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-4">
+      <div *ngFor="let p of postings">
+        <div class="mb-3">
+          <div>
+            {{p.content}}
+          </div>
+          <div>
+            <small>{{p.userId}} | {{p.createdAt}}</small>
+          </div>
+        </div>
       </div>
     </div>
   </div>

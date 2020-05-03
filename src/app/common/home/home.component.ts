@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {User} from '../model/user';
+import {User} from '../../auth/model/user';
 import {ModalDismissReasons, NgbModal} from '@ng-bootstrap/ng-bootstrap';
+import {PostingService} from '../../posting/services/posting.service';
+import {Posting} from '../../posting/model/Posting';
 
 @Component({
   selector: 'app-home',
@@ -11,15 +13,18 @@ export class HomeComponent implements OnInit {
 
   currentUser: User;
   closeResult: string;
+  postings: Posting[];
 
   constructor(
-    private modalService: NgbModal
+    private modalService: NgbModal,
+    private postingService: PostingService
   ) {
 
   }
 
   ngOnInit() {
     this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    this.getAllPostings();
   }
 
   open(content) {
@@ -38,6 +43,13 @@ export class HomeComponent implements OnInit {
     } else {
       return  `with: ${reason}`;
     }
+  }
+
+  private getAllPostings() {
+    this.postingService.getAllPostings().subscribe(result => {
+      this.postings = result;
+      console.log(this.postings);
+    });
   }
 
 }

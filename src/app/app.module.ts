@@ -1,22 +1,24 @@
-import { PostService } from './services/micropost.service';
+import { PostingService } from './posting/services/posting.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppComponent } from './app.component';
 import { RouterModule, Routes} from '@angular/router';
-import { HomeComponent } from './home/home.component';
-import { HeaderComponent } from './header/header.component';
+import { HomeComponent } from './common/home/home.component';
+import { HeaderComponent } from './common/header/header.component';
 import { AppRoutingModule } from './app-routing.module';
-import { LoginComponent } from './login/login.component';
-import { RegisterComponent } from './register/register.component';
+import { LoginComponent } from './auth/login/login.component';
+import { RegisterComponent } from './auth/register/register.component';
 import { FormsModule, ReactiveFormsModule} from '@angular/forms';
-import { UserService} from './services/user.service';
-import { ResetPasswordComponent } from './reset-password/reset-password.component';
-import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
-import { JwtInterceptor} from './helper/jwt.interceptor';
+import { UserService} from './auth/services/user.service';
+import { ResetPasswordComponent } from './auth/reset-password/reset-password.component';
+import { ForgotPasswordComponent } from './auth/forgot-password/forgot-password.component';
+import { JwtInterceptor} from './auth/helper/jwt.interceptor';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import {AuthService} from './services/auth.service';
-import {HttpClient, HttpClientModule} from '@angular/common/http';
+import {AuthService} from './auth/services/auth.service';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
+import { CreatePostingComponent } from './posting/create-posting/create-posting.component';
+import { ShowPostingComponent } from './posting/show-posting/show-posting.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +28,9 @@ import {HttpClient, HttpClientModule} from '@angular/common/http';
     LoginComponent,
     RegisterComponent,
     ResetPasswordComponent,
-    ForgotPasswordComponent
+    ForgotPasswordComponent,
+    CreatePostingComponent,
+    ShowPostingComponent
   ],
   imports: [
     BrowserModule,
@@ -39,8 +43,8 @@ import {HttpClient, HttpClientModule} from '@angular/common/http';
   ],
   providers: [
     UserService,
-    /* {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true}, */
-    PostService,
+    {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true},
+    PostingService,
     AuthService
   ],
   bootstrap: [AppComponent]
