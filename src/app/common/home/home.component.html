@@ -24,7 +24,7 @@
             {{p.content}}
           </div>
           <div>
-            <small>{{p.userId}} | {{p.createdAt}}</small>
+            <small>{{p.userId}} | {{p.createdAt}} | <a [routerLink]="['/posting/' + p.id]">link</a> </small>
           </div>
         </div>
       </div>
