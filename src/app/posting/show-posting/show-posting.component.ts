@@ -3,6 +3,7 @@ import {ActivatedRoute} from '@angular/router';
 import {PostingService} from '../services/posting.service';
 import {Posting} from '../model/Posting';
 import {Location} from '@angular/common';
+import {User} from '../../auth/model/user';
 
 @Component({
   selector: 'app-show-posting',
@@ -13,6 +14,7 @@ export class ShowPostingComponent implements OnInit {
 
   postingId: number;
   posting: Posting;
+  currentUser: User;
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -21,6 +23,7 @@ export class ShowPostingComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.getCurrentUser();
     this.activatedRoute.params.subscribe(params => {
       this.postingId = params['id'];
     });
@@ -31,6 +34,10 @@ export class ShowPostingComponent implements OnInit {
 
   backLink() {
     this.location.back();
+  }
+
+  private getCurrentUser() {
+    this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
   }
 
 }

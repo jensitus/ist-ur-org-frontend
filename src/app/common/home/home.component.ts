@@ -48,7 +48,6 @@ export class HomeComponent implements OnInit {
   private getAllPostings() {
     this.postingService.getAllPostings().subscribe(result => {
       this.postings = result;
-      console.log(this.postings);
     });
   }
 

@@ -1,0 +1,13 @@
+<div>
+  <div *ngFor="let c of comments">
+    <div>
+      ----------------------------------
+    </div>
+    <div>
+      {{c.body}}
+    </div>
+    <div>
+      <small>{{c.userId}} | {{c.postingId}} | {{c.createdAt}}</small>
+    </div>
+  </div>
+</div>
