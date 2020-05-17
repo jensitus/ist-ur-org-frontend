@@ -11,7 +11,9 @@ export class PostingService {
 
   apiUrl = environment.api_url;
 
-  constructor(private http: HttpClient) {
+  constructor(
+    private http: HttpClient
+  ) {
   }
 
   create(post: Posting): Observable<Posting> {

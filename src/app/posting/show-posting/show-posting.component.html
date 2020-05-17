@@ -9,5 +9,10 @@
       <button class="btn btn-sm btn-outline-danger" (click)="backLink()">back</button>
     </div>
   </div>
-
+ <div>
+   <app-create-comment [userId]="currentUser.id" [postingId]="postingId"></app-create-comment>
+ </div>
+  <div>
+    <app-comment-list [postingId]="postingId"></app-comment-list>
+  </div>
 </div>

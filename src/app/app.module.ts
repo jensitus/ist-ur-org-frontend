@@ -19,6 +19,8 @@ import {AuthService} from './auth/services/auth.service';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import { CreatePostingComponent } from './posting/create-posting/create-posting.component';
 import { ShowPostingComponent } from './posting/show-posting/show-posting.component';
+import { CreateCommentComponent } from './posting/create-comment/create-comment.component';
+import { CommentListComponent } from './posting/comment-list/comment-list.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +32,9 @@ import { ShowPostingComponent } from './posting/show-posting/show-posting.compon
     ResetPasswordComponent,
     ForgotPasswordComponent,
     CreatePostingComponent,
-    ShowPostingComponent
+    ShowPostingComponent,
+    CreateCommentComponent,
+    CommentListComponent
   ],
   imports: [
     BrowserModule,
