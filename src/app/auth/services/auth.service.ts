@@ -26,8 +26,6 @@ export class AuthService {
   }
 
   logout() {
-    console.log('authService');
-    console.log(localStorage.getItem('currentUser'));
     localStorage.removeItem('currentUser');
     this.behaviorService.setLoginSubject(true);
   }

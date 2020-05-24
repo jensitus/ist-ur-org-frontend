@@ -21,6 +21,8 @@ import { CreatePostingComponent } from './posting/create-posting/create-posting.
 import { ShowPostingComponent } from './posting/show-posting/show-posting.component';
 import { CreateCommentComponent } from './posting/create-comment/create-comment.component';
 import { CommentListComponent } from './posting/comment-list/comment-list.component';
+import {ErrorInterceptor} from './common/helper/error.interceptor';
+import {AppCommonModule} from './common/app-common/app-common.module';
 
 @NgModule({
   declarations: [
@@ -39,6 +41,7 @@ import { CommentListComponent } from './posting/comment-list/comment-list.compon
   imports: [
     BrowserModule,
     AppRoutingModule,
+    AppCommonModule,
     BrowserAnimationsModule,
     FormsModule,
     ReactiveFormsModule,
@@ -48,6 +51,7 @@ import { CommentListComponent } from './posting/comment-list/comment-list.compon
   providers: [
     UserService,
     {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true},
+    {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true},
     PostingService,
     AuthService
   ],

@@ -3,6 +3,8 @@ import {User} from '../../auth/model/user';
 import {ModalDismissReasons, NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {PostingService} from '../../posting/services/posting.service';
 import {Posting} from '../../posting/model/Posting';
+import {CommonService} from '../services/common.service';
+import {UserService} from '../../auth/services/user.service';
 
 @Component({
   selector: 'app-home',
@@ -17,14 +19,21 @@ export class HomeComponent implements OnInit {
 
   constructor(
     private modalService: NgbModal,
-    private postingService: PostingService
+    private postingService: PostingService,
+    private commonService: CommonService,
+    private userService: UserService
   ) {
 
   }
 
   ngOnInit() {
     this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
-    this.getAllPostings();
+    if (this.currentUser != null) {
+      this.userService.checkAuthToken(this.currentUser.accessToken).subscribe(data => {
+        this.getAllPostings();
+      });
+    }
+
   }
 
   open(content) {
