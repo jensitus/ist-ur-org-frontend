@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { environment } from '../../../environments/environment';
 import {HttpClient} from '@angular/common/http';
 import {User} from '../model/user';
+import {Observable} from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -28,6 +29,10 @@ export class UserService {
 
   resetPassword(user: User, token: string, email: string) {
     return this.http.put(this.apiUrl + '/api/auth/reset_password/' + token + '?email=' + email, user, {responseType: 'text'});
+  }
+
+  checkAuthToken(token: string): Observable<String> {
+    return this.http.post<String>(this.apiUrl + '/api/auth/auth/check_auth_token', token);
   }
 
 }
