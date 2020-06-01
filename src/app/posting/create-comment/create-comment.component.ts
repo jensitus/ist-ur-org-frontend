@@ -12,8 +12,8 @@ import {BehaviorService} from '../../common/services/behavior.service';
 })
 export class CreateCommentComponent implements OnInit {
 
-  @Input() userId: number;
-  @Input() postingId: number;
+  @Input() userId: string;
+  @Input() postingId: string;
   commentForm: FormGroup;
   loading = false;
   submitted = false;

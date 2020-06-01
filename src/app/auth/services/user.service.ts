@@ -3,6 +3,7 @@ import { environment } from '../../../environments/environment';
 import {HttpClient} from '@angular/common/http';
 import {User} from '../model/user';
 import {Observable} from 'rxjs';
+import {MessageOrg} from '../../common/model/MessageOrg';
 
 @Injectable({
   providedIn: 'root'
@@ -31,8 +32,8 @@ export class UserService {
     return this.http.put(this.apiUrl + '/api/auth/reset_password/' + token + '?email=' + email, user, {responseType: 'text'});
   }
 
-  checkAuthToken(token: string): Observable<String> {
-    return this.http.post<String>(this.apiUrl + '/api/auth/auth/check_auth_token', token);
+  checkAuthToken(token: string): Observable<MessageOrg> {
+    return this.http.post<MessageOrg>(this.apiUrl + '/api/auth/auth/check_auth_token', token);
   }
 
 }

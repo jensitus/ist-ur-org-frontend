@@ -5,6 +5,7 @@ import {PostingService} from '../../posting/services/posting.service';
 import {Posting} from '../../posting/model/Posting';
 import {CommonService} from '../services/common.service';
 import {UserService} from '../../auth/services/user.service';
+import {MessageOrg} from '../model/MessageOrg';
 
 @Component({
   selector: 'app-home',
@@ -15,11 +16,11 @@ export class HomeComponent implements OnInit {
 
   currentUser: User;
   closeResult: string;
-  postings: Posting[];
+  tokenCheck: MessageOrg;
 
   constructor(
     private modalService: NgbModal,
-    private postingService: PostingService,
+
     private commonService: CommonService,
     private userService: UserService
   ) {
@@ -30,7 +31,8 @@ export class HomeComponent implements OnInit {
     this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
     if (this.currentUser != null) {
       this.userService.checkAuthToken(this.currentUser.accessToken).subscribe(data => {
-        this.getAllPostings();
+        this.tokenCheck = data;
+        console.log('tokenCheck', this.tokenCheck);
       });
     }
 
@@ -52,12 +54,6 @@ export class HomeComponent implements OnInit {
     } else {
       return  `with: ${reason}`;
     }
-  }
-
-  private getAllPostings() {
-    this.postingService.getAllPostings().subscribe(result => {
-      this.postings = result;
-    });
   }
 
 }

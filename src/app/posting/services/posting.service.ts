@@ -24,7 +24,7 @@ export class PostingService {
     return this.http.get<Posting[]>(`${this.apiUrl}/api/postings/all/`);
   }
 
-  getById(id: number): Observable<Posting> {
+  getById(id: string): Observable<Posting> {
     return this.http.get<Posting>(`${this.apiUrl}/api/postings/get/${id}`);
   }
 

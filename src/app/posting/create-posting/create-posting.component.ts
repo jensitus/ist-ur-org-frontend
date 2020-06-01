@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Posting} from '../model/Posting';
 import {PostingService} from '../services/posting.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-create-posting',
@@ -18,12 +19,13 @@ export class CreatePostingComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private postingService: PostingService
+    private postingService: PostingService,
+    private router: Router
   ) {
   }
 
   ngOnInit() {
-    this.getPostinForm();
+    this.getPostingForm();
   }
 
   get d() {
@@ -39,6 +41,7 @@ export class CreatePostingComponent implements OnInit {
     console.log(this.postingForm.value);
     this.posting = {
       id: null,
+      slug: null,
       content: this.postingForm.value.content,
       userId: null,
       picture: null,
@@ -46,12 +49,15 @@ export class CreatePostingComponent implements OnInit {
       updatedAt: null
     };
     this.postingService.create(this.posting).subscribe(result => {
-      this.getPostinForm();
+      this.getPostingForm();
+      this.posting = result;
+      console.log('result', this.posting);
       this.loading = false;
+      this.router.navigate(['/posting/' + this.posting.id]);
     });
   }
 
-  private getPostinForm() {
+  private getPostingForm() {
     this.postingForm = this.formBuilder.group({
       content: ['', Validators.required]
     });

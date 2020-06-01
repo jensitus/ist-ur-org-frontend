@@ -2,8 +2,8 @@ export interface Comment {
 
   id: string;
   body: string;
-  postingId: number;
-  userId: number;
+  postingId: string;
+  userId: string;
   createdAt: Date;
   updatedAt: Date;
 

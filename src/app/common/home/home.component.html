@@ -8,6 +8,9 @@
         <div>
           <app-create-posting></app-create-posting>
         </div>
+        <div *ngIf="tokenCheck.bool">
+          <app-show-posting-list></app-show-posting-list>
+        </div>
       </div>
       <div *ngIf="currentUser == null">
         <h3>Welcome to ist-ur.org</h3>
@@ -18,16 +21,7 @@
   </div>
   <div class="row">
     <div class="col-md-4">
-      <div *ngFor="let p of postings">
-        <div class="mb-3">
-          <div>
-            {{p.content}}
-          </div>
-          <div>
-            <small>{{p.userId}} | {{p.createdAt}} | <a [routerLink]="['/posting/' + p.id]">link</a> </small>
-          </div>
-        </div>
-      </div>
+
     </div>
   </div>
   <div class="row">
