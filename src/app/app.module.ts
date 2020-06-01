@@ -23,6 +23,7 @@ import { CreateCommentComponent } from './posting/create-comment/create-comment.
 import { CommentListComponent } from './posting/comment-list/comment-list.component';
 import {ErrorInterceptor} from './common/helper/error.interceptor';
 import {AppCommonModule} from './common/app-common/app-common.module';
+import { ShowPostingListComponent } from './posting/show-posting-list/show-posting-list.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import {AppCommonModule} from './common/app-common/app-common.module';
     CreatePostingComponent,
     ShowPostingComponent,
     CreateCommentComponent,
-    CommentListComponent
+    CommentListComponent,
+    ShowPostingListComponent
   ],
   imports: [
     BrowserModule,

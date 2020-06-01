@@ -12,7 +12,7 @@ import {User} from '../../auth/model/user';
 })
 export class ShowPostingComponent implements OnInit {
 
-  postingId: number;
+  postingId: string;
   posting: Posting;
   currentUser: User;
 

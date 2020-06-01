@@ -1,5 +1,6 @@
 export class Posting {
-  id: number;
+  id: string;
+  slug: number;
   content: string;
   userId: number;
   picture: string;

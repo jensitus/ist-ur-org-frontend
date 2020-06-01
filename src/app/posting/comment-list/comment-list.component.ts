@@ -10,7 +10,7 @@ import {BehaviorService} from '../../common/services/behavior.service';
 })
 export class CommentListComponent implements OnInit {
 
-  @Input() postingId: number;
+  @Input() postingId: string;
   comments: any;
   reload = false;
 

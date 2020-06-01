@@ -20,7 +20,7 @@ export class CommentService {
     return this.http.post<Comment>(this.apiUrl + '/api/comments/create', comment);
   }
 
-  getByPostingId(postingId: number): Observable<Comment[]> {
+  getByPostingId(postingId: string): Observable<Comment[]> {
     return this.http.get<Comment[]>(this.apiUrl + '/api/comments/get/' + postingId);
   }
 
