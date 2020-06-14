@@ -2,6 +2,7 @@ import { AuthService } from '../services/auth.service';
 import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
 import {BehaviorService} from '../../common/services/behavior.service';
+import {AlertService} from '../../common/services/alert.service';
 
 @Component({
   selector: 'app-login',
@@ -21,7 +22,8 @@ export class LoginComponent implements OnInit {
   constructor(
     private authService: AuthService,
     private router: Router,
-    private behaviorService: BehaviorService
+    private behaviorService: BehaviorService,
+    private alertService: AlertService
   ) { }
 
   ngOnInit() {
@@ -39,6 +41,7 @@ export class LoginComponent implements OnInit {
       console.log('data: ', this.data);
       localStorage.setItem('currentUser', JSON.stringify(this.data.userDto));
       this.behaviorService.setLoginSubject(true);
+      this.alertService.success('Jesus, you logged in successfully, how did you do that?', true);
       this.router.navigate(['/home']);
     }, error => {
       console.log(error);

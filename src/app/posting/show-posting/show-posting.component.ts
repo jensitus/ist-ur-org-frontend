@@ -3,7 +3,8 @@ import {ActivatedRoute} from '@angular/router';
 import {PostingService} from '../services/posting.service';
 import {Posting} from '../model/Posting';
 import {Location} from '@angular/common';
-import {User} from '../../auth/model/user';
+import {User} from '../../user/model/user';
+import {UserService} from '../../user/services/user.service';
 
 @Component({
   selector: 'app-show-posting',
@@ -15,11 +16,13 @@ export class ShowPostingComponent implements OnInit {
   postingId: string;
   posting: Posting;
   currentUser: User;
+  postingUser: User;
 
   constructor(
     private activatedRoute: ActivatedRoute,
     private postingService: PostingService,
-    private location: Location
+    private location: Location,
+    private userService: UserService
   ) { }
 
   ngOnInit() {
@@ -29,6 +32,9 @@ export class ShowPostingComponent implements OnInit {
     });
     this.postingService.getById(this.postingId).subscribe(result => {
       this.posting = result;
+      this.userService.getUserById(this.posting.userId).subscribe(pu => {
+        this.postingUser = pu;
+      });
     });
   }
 
