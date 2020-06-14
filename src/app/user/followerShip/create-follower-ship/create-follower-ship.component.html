@@ -1,0 +1,7 @@
+<div *ngIf="followed_id != follower_id">
+  <button *ngIf="following == false" (click)="followThis()" class="btn btn-outline-primary">follow</button>
+  <button *ngIf="following == true" (click)="unFollowThis()" class="btn btn-outline-danger">unfollow</button>
+</div>
+<div *ngIf="loading" class="spinner-border" role="status">
+  <span class="sr-only">Loading...</span>
+</div>

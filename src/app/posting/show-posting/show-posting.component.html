@@ -6,12 +6,17 @@
   </div>
   <div class="row">
     <div class="col-md-4">
+      <a [routerLink]="['/user/' + postingUser.id]"> {{postingUser.username}} </a>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-4">
       <button class="btn btn-sm btn-outline-danger" (click)="backLink()">back</button>
     </div>
   </div>
- <div>
-   <app-create-comment [userId]="currentUser.id" [postingId]="postingId"></app-create-comment>
- </div>
+  <div>
+    <app-create-comment [userId]="currentUser.id" [postingId]="postingId"></app-create-comment>
+  </div>
   <div>
     <app-comment-list [postingId]="postingId"></app-comment-list>
   </div>

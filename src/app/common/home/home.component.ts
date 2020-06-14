@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import {User} from '../../auth/model/user';
+import {User} from '../../user/model/user';
 import {ModalDismissReasons, NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {PostingService} from '../../posting/services/posting.service';
 import {Posting} from '../../posting/model/Posting';
 import {CommonService} from '../services/common.service';
-import {UserService} from '../../auth/services/user.service';
+import {UserService} from '../../user/services/user.service';
 import {MessageOrg} from '../model/MessageOrg';
 
 @Component({
