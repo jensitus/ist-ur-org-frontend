@@ -7,6 +7,7 @@ import {ResetPasswordComponent} from './auth/reset-password/reset-password.compo
 import {ForgotPasswordComponent} from './auth/forgot-password/forgot-password.component';
 import {ShowPostingComponent} from './posting/show-posting/show-posting.component';
 import {ShowUserComponent} from './user/show-user/show-user.component';
+import {ImageUploadComponent} from './common/image-upload/image-upload.component';
 
 const routes: Routes = [
   {path: 'home', component: HomeComponent},
@@ -16,11 +17,12 @@ const routes: Routes = [
   {path: 'forgot-password', component: ForgotPasswordComponent},
   {path: 'reset-password/:token/edit', component: ResetPasswordComponent},
   {path: 'posting/:id', component: ShowPostingComponent},
-  {path: 'user/:id', component: ShowUserComponent}
+  {path: 'user/:id', component: ShowUserComponent},
+  {path: 'upload-image', component: ImageUploadComponent}
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, { relativeLinkResolution: 'legacy' })],
   exports: [RouterModule]
 })
 export class AppRoutingModule {}

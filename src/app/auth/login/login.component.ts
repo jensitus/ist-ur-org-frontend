@@ -1,8 +1,9 @@
-import { AuthService } from '../services/auth.service';
-import { Component, OnInit } from '@angular/core';
+import {AuthService} from '../services/auth.service';
+import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 import {BehaviorService} from '../../common/services/behavior.service';
 import {AlertService} from '../../common/services/alert.service';
+import {finalize} from 'rxjs/operators';
 
 @Component({
   selector: 'app-login',
@@ -18,31 +19,36 @@ export class LoginComponent implements OnInit {
   user: any;
   data: any;
   u: any;
+  loading = false;
 
   constructor(
     private authService: AuthService,
     private router: Router,
     private behaviorService: BehaviorService,
     private alertService: AlertService
-  ) { }
+  ) {
+  }
 
   ngOnInit() {
-    console.log('here we are');
     this.authService.logout();
   }
 
   onLogin() {
+    this.loading = true;
     this.user = {
-      username: this.username,
+      email: this.email,
       password: this.password
     };
-    this.authService.login(this.user).subscribe(data => {
+    this.authService.login(this.user).pipe(
+      finalize(() => {
+        this.behaviorService.setLoginSubject(true);
+        this.alertService.success('Jesus Christ, you logged in successfully, how did you do that?', true);
+        this.router.navigate(['/home']);
+        this.loading = false;
+      })
+    ).subscribe(data => {
       this.data = data;
-      console.log('data: ', this.data);
-      localStorage.setItem('currentUser', JSON.stringify(this.data.userDto));
-      this.behaviorService.setLoginSubject(true);
-      this.alertService.success('Jesus, you logged in successfully, how did you do that?', true);
-      this.router.navigate(['/home']);
+      localStorage.setItem('currentUser', JSON.stringify(this.data.user));
     }, error => {
       console.log(error);
     });

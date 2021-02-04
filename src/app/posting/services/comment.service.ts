@@ -9,7 +9,7 @@ import {Observable} from 'rxjs';
 })
 export class CommentService {
 
-  apiUrl = environment.api_url;
+  apiOrgUrl = environment.api_org_url;
 
   constructor(
     private http: HttpClient
@@ -17,11 +17,11 @@ export class CommentService {
   }
 
   create(comment: CreateCommentDto): Observable<Comment> {
-    return this.http.post<Comment>(this.apiUrl + '/api/comments/create', comment);
+    return this.http.post<Comment>(this.apiOrgUrl + '/postings/' + comment.postingId + '/comments/', comment);
   }
 
   getByPostingId(postingId: string): Observable<Comment[]> {
-    return this.http.get<Comment[]>(this.apiUrl + '/api/comments/get/' + postingId);
+    return this.http.get<Comment[]>(this.apiOrgUrl + '/postings/' + postingId + '/comments/');
   }
 
 }

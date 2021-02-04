@@ -9,7 +9,7 @@ import { BehaviorService } from '../../common/services/behavior.service';
 })
 export class AuthService {
 
-  apiUrl = environment.api_url;
+  apiOrgUrl = environment.api_org_url;
   retVal: any;
 
   constructor(
@@ -22,7 +22,7 @@ export class AuthService {
       message: 'aber hallo',
       trueOrFalse: true
     };
-    return this.http.post(this.apiUrl + '/api/auth/signin', user);
+    return this.http.post(this.apiOrgUrl + '/api/auth/login', user);
   }
 
   logout() {

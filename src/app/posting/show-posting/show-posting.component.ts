@@ -5,6 +5,7 @@ import {Posting} from '../model/Posting';
 import {Location} from '@angular/common';
 import {User} from '../../user/model/user';
 import {UserService} from '../../user/services/user.service';
+import {finalize} from 'rxjs/operators';
 
 @Component({
   selector: 'app-show-posting',
@@ -17,24 +18,31 @@ export class ShowPostingComponent implements OnInit {
   posting: Posting;
   currentUser: User;
   postingUser: User;
+  loading = false;
 
   constructor(
     private activatedRoute: ActivatedRoute,
     private postingService: PostingService,
     private location: Location,
     private userService: UserService
-  ) { }
-
-  ngOnInit() {
-    this.getCurrentUser();
+  ) {
     this.activatedRoute.params.subscribe(params => {
       this.postingId = params['id'];
     });
-    this.postingService.getById(this.postingId).subscribe(result => {
+  }
+
+  ngOnInit() {
+    this.loading = true;
+    this.getCurrentUser();
+    this.postingService.getById(this.postingId).pipe(
+      finalize(() => {
+        this.getPostingUser();
+        this.loading = false;
+      })
+    ).subscribe(result => {
       this.posting = result;
-      this.userService.getUserById(this.posting.userId).subscribe(pu => {
-        this.postingUser = pu;
-      });
+      console.log('this.posting', this.posting);
+      console.log('this.posting.user_id', this.posting.user_id);
     });
   }
 
@@ -44,6 +52,12 @@ export class ShowPostingComponent implements OnInit {
 
   private getCurrentUser() {
     this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
+  }
+
+  private getPostingUser(): void {
+    this.userService.getUserById(this.posting.user_id).subscribe(pu => {
+      this.postingUser = pu;
+    });
   }
 
 }

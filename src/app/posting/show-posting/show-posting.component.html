@@ -1,12 +1,12 @@
 <div class="container-fluid">
   <div class="row">
-    <div class="col-md-4">
+    <div class="col-md-4" *ngIf="posting">
       {{posting.content}}
     </div>
   </div>
   <div class="row">
-    <div class="col-md-4">
-      <a [routerLink]="['/user/' + postingUser.id]"> {{postingUser.username}} </a>
+    <div class="col-md-4" *ngIf="postingUser">
+      <a [routerLink]="['/user/' + postingUser.id]"> {{postingUser.name}} </a>
     </div>
   </div>
   <div class="row">
@@ -15,7 +15,7 @@
     </div>
   </div>
   <div>
-    <app-create-comment [userId]="currentUser.id" [postingId]="postingId"></app-create-comment>
+    <app-create-comment [user_id]="currentUser.id" [postingId]="postingId"></app-create-comment>
   </div>
   <div>
     <app-comment-list [postingId]="postingId"></app-comment-list>

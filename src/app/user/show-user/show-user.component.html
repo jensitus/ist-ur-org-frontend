@@ -1,12 +1,25 @@
 <div class="container-fluid">
   <div class="row">
     <div class="col-md-4">
-      <div>{{userToShow.username}}</div>
+      <div class="row">
+        <div class="col">
+          <div>{{userToShow.name}}</div>
+        </div>
+      </div>
+      <div class="row" *ngIf="currentUser != null">
+        <div class="col-md-4">
+          <div *ngIf="currentUser.id === userToShow.id">
+            <app-upload-avatar></app-upload-avatar>
+          </div>
+          <!--app-create-follower-ship [follower_id]="currentUser.id" [followed_id]="userToShow.id"></app-create-follower-ship-->
+        </div>
+      </div>
+
     </div>
-  </div>
-  <div class="row" *ngIf="currentUser != null">
+    <div class="col-md-4"></div>
     <div class="col-md-4">
-      <app-create-follower-ship [follower_id]="currentUser.id" [followed_id]="userToShow.id"></app-create-follower-ship>
+      <img src="{{userToShow.avatar}}" width="50%">
     </div>
   </div>
+
 </div>

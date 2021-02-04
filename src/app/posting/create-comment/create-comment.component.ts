@@ -12,7 +12,7 @@ import {BehaviorService} from '../../common/services/behavior.service';
 })
 export class CreateCommentComponent implements OnInit {
 
-  @Input() userId: string;
+  @Input() user_id: string;
   @Input() postingId: string;
   commentForm: FormGroup;
   loading = false;
@@ -39,7 +39,7 @@ export class CreateCommentComponent implements OnInit {
     this.loading = true;
     this.createCommentDto = {
       body: this.commentForm.value.body,
-      userId: this.userId,
+      user_id: this.user_id,
       postingId: this.postingId
     };
     console.log('this.createCommentDto', this.createCommentDto);

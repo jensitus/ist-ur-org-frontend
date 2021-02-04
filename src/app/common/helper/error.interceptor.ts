@@ -16,9 +16,9 @@ export class ErrorInterceptor implements HttpInterceptor {
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     return next.handle(req).pipe(catchError(err => {
-      console.log('ErrorInterceptor', err.status);
-      if (err.status === 403) {
-        this.alertService.error(err.error.text, true);
+      console.log('ErrorInterceptor', err);
+      this.alertService.error(err.status + ': ' + err.error.message, true);
+      if (err) {
         this.router.navigate(['/login']);
       }
       return throwError(err);

@@ -1,0 +1,10 @@
+<div class="form-group mt-1">
+  <div class="form-group">
+    <label>avatar</label>
+    <input type="file" (change)="onUpload($event.target.files)" class="btn btn-sm btn-outline-success">
+  </div>
+</div>
+<div class="form-group">
+  <button class="btn btn-outline-danger" (click)="uploadNow()">hoch damit</button>
+</div>
+
