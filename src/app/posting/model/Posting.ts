@@ -1,9 +1,9 @@
-export class Posting {
-  id: string;
-  slug: number;
+export interface Posting {
+  id?: string;
+  slug?: number;
+  title?: string;
   content: string;
-  userId: number;
-  picture: string;
-  createdAt: Date;
-  updatedAt: Date;
+  user_id?: string;
+  createdAt?: Date;
+  updatedAt?: Date;
 }

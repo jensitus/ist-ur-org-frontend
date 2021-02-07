@@ -4,8 +4,8 @@
       <h4>Login</h4>
       <form #loginForm="ngForm" (ngSubmit)="onLogin()">
         <span>
-          <input id="float-input-username" class="form-control" [(ngModel)]="username" name="username" type="text">
-          <label>username</label>
+          <input id="float-input-username" class="form-control" [(ngModel)]="email" name="email" type="text">
+          <label>email</label>
         </span>
         <br>
         <span>
@@ -19,6 +19,15 @@
       </form>
       <br>
       <a [routerLink]="['/forgot-password']" class="btn btn-link">Forgot Password</a>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-5">
+      <p *ngIf="loading">
+        <ngb-progressbar type="warning" [value]="100" [striped]="true" [animated]="true">
+          <i>geduld</i>
+        </ngb-progressbar>
+      </p>
     </div>
   </div>
 </div>

@@ -30,10 +30,12 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
     this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
     if (this.currentUser != null) {
-      this.userService.checkAuthToken(this.currentUser.accessToken).subscribe(data => {
-        this.tokenCheck = data;
-        console.log('tokenCheck', this.tokenCheck);
-      });
+      console.log('AUTHTOKENVERFICKTESCHEISSE', this.currentUser.access_token);
+      // this.userService.checkAuthToken(this.currentUser.access_token).subscribe(data => {
+      //   console.log(data);
+      //   this.tokenCheck = data;
+      //   console.log('tokenCheck', this.tokenCheck);
+      // });
     }
 
   }

@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { DeleteFollowerShipComponent } from './delete-follower-ship.component';
 
@@ -6,7 +6,7 @@ describe('DeleteFollowerShipComponent', () => {
   let component: DeleteFollowerShipComponent;
   let fixture: ComponentFixture<DeleteFollowerShipComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ DeleteFollowerShipComponent ]
     })

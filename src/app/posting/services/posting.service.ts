@@ -9,7 +9,7 @@ import {Observable} from 'rxjs';
 })
 export class PostingService {
 
-  apiUrl = environment.api_url;
+  apiOrgUrl = environment.api_org_url;
 
   constructor(
     private http: HttpClient
@@ -17,22 +17,22 @@ export class PostingService {
   }
 
   create(post: Posting): Observable<Posting> {
-    return this.http.post<Posting>(`${this.apiUrl}/api/postings/create/`, post);
+    return this.http.post<Posting>(`${this.apiOrgUrl}/postings`, post);
   }
 
   getAllPostings(): Observable<Posting[]> {
-    return this.http.get<Posting[]>(`${this.apiUrl}/api/postings/all/`);
+    return this.http.get<Posting[]>(`${this.apiOrgUrl}/postings`);
   }
 
   getById(id: string): Observable<Posting> {
-    return this.http.get<Posting>(`${this.apiUrl}/api/postings/get/${id}`);
+    return this.http.get<Posting>(`${this.apiOrgUrl}/postings/${id}`);
   }
 
-  delete(id: number): Observable<void> {
-    return this.http.delete<void>(`${this.apiUrl}/posts/${id}`);
+  delete(id: string): Observable<void> {
+    return this.http.delete<void>(`${this.apiOrgUrl}/postings/${id}`);
   }
 
   update(post: Posting): Observable<Posting> {
-    return this.http.put<Posting>(`${this.apiUrl}/posts/${post.id}`, post);
+    return this.http.put<Posting>(`${this.apiOrgUrl}/postings/${post.id}`, post);
   }
 }

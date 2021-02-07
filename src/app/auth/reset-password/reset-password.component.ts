@@ -1,15 +1,17 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {UserService} from '../../user/services/user.service';
 import {ActivatedRoute, Router} from '@angular/router';
-import {first} from 'rxjs/operators';
+import {first, takeUntil} from 'rxjs/operators';
+import {Subject} from 'rxjs';
+import {AlertService} from '../../common/services/alert.service';
 
 @Component({
   selector: 'app-reset-password',
   templateUrl: './reset-password.component.html',
   styleUrls: ['./reset-password.component.css']
 })
-export class ResetPasswordComponent implements OnInit {
+export class ResetPasswordComponent implements OnInit, OnDestroy {
 
   resetForm: FormGroup;
   token: string;
@@ -18,46 +20,36 @@ export class ResetPasswordComponent implements OnInit {
   submitted = false;
   expired = false;
   message: string;
-  data: any;
-  error: any;
+  data: string;
+  notifier = new Subject();
 
   constructor(
     private router: Router,
     private activatedRoute: ActivatedRoute,
     private formBuilder: FormBuilder,
-    private userService: UserService
+    private userService: UserService,
+    private alertService: AlertService
   ) { }
 
   ngOnInit() {
-    this.activatedRoute.params.subscribe(params => {
+    this.activatedRoute.params.pipe(
+      takeUntil(this.notifier)
+    ).subscribe(params => {
       this.token = params['token'];
     });
-    console.log('token: ' + this.token);
-    this.email = this.activatedRoute.snapshot.queryParamMap.get('email');
-    console.log('email: ' + this.email);
-
-    this.userService.checkTokenExpired(this.token, this.email).subscribe((data) => {
+    this.userService.checkTokenExpired(this.token).pipe(
+      takeUntil(this.notifier)
+    ).subscribe((data) => {
         this.data = data;
-        console.log('ALLES PASST');
-        console.log(this.data);
+        this.alertService.success(this.data);
       }, (error) => {
-        this.error = error;
-        console.log('ERROR ZUM DONNER');
         console.log('error', error);
-        console.log(error.status);
-        if (error.status === 401) {
-          this.router.navigate(['/home']);
-        } else if (error.status === 422) {
-          this.router.navigate(['/home']);
-        }
-        // this.alertService.error(error, true);
       }
     );
 
     this.resetForm = this.formBuilder.group({
       password: ['', [Validators.required, Validators.minLength(6)]],
-      password_confirmation: ['', Validators.required],
-      email: [this.email, Validators.required]
+      password_confirmation: ['', Validators.required]
     });
   }
 
@@ -67,16 +59,14 @@ export class ResetPasswordComponent implements OnInit {
       return;
     }
     this.loading = true;
-    this.userService.resetPassword(this.resetForm.value, this.token, this.email).pipe(first()).subscribe(data => {
+    this.userService.resetPassword(this.resetForm.value, this.token).pipe(
+      first(),
+      takeUntil(this.notifier)
+    ).subscribe(data => {
         this.data = data;
         console.log('data: ', this.data);
-        if (this.data.message) {
-        }
-        // this.alertService.success('data', true);
+        this.alertService.success(this.data, true);
         this.router.navigate(['/login']);
-      }, error => {
-        console.log('error: ' + error.toString());
-        // this.alertService.error(error);
       }
     );
   }
@@ -84,5 +74,12 @@ export class ResetPasswordComponent implements OnInit {
   get f() {
     return this.resetForm.controls;
   }
+
+  ngOnDestroy(): void {
+    this.notifier.next();
+    this.notifier.complete();
+  }
+
+
 
 }

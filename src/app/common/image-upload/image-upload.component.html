@@ -1,0 +1,9 @@
+<p>image-upload works!</p>
+<div class="form-group mt-1">
+  <span>// here we have to find a solution for file upload</span>
+  <input type="file" (change)="onUpload($event.target.files)">
+  <!-- <p-fileUpload name="avatar" accept="image/*" url="{{avatar_upload_url}}" maxFileSize="1000000"></p-fileUpload>-->
+</div>
+<div class="form-group">
+  <button class="btn btn-outline-danger" (click)="uploadNow()">hoch damit</button>
+</div>

@@ -1,7 +1,7 @@
 export interface CreateCommentDto {
 
   body: string;
-  userId: string;
+  user_id: string;
   postingId: string;
 
 }

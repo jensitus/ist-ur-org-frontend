@@ -11,7 +11,7 @@ import {User} from '../model/user';
 })
 export class ShowUserComponent implements OnInit {
 
-  userId: number;
+  userId: string;
   userToShow: User;
   currentUser: User;
 
@@ -28,11 +28,13 @@ export class ShowUserComponent implements OnInit {
     });
     this.userService.getUserById(this.userId).subscribe(u => {
       this.userToShow = u;
+      console.log('userToShow', this.userToShow);
     });
   }
 
   private getCurrentUser() {
     this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    console.log('currentUser', this.currentUser);
   }
 
 }

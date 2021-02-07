@@ -13,45 +13,54 @@ export class UserService {
 
   httpReturnValue: any;
 
-  apiUrl = environment.api_url;
+  apiOrgUrl = environment.api_org_url;
 
   constructor(private http: HttpClient) {
   }
 
   register(user: User) {
-    return this.http.post(this.apiUrl + '/api/auth/signup', user);
+    return this.http.post(this.apiOrgUrl + '/api/auth/signup', user);
   }
 
   forgotPassword(email: string) {
-    return this.http.post(this.apiUrl + '/api/auth/reset_password', email, {responseType: 'text'});
+    return this.http.post(this.apiOrgUrl + '/api/reset_password/create', email, {responseType: 'text'});
   }
 
-  checkTokenExpired(token: string, email: string) {
-    return this.httpReturnValue = this.http.get(`${this.apiUrl}/api/auth/reset_password/${token}?email=` + email, {responseType: 'text'});
+  checkTokenExpired(token: string) {
+    return this.httpReturnValue = this.http.get(`${this.apiOrgUrl}/api/reset_password/check_token/${token}`, {responseType: 'text'});
   }
 
-  resetPassword(user: User, token: string, email: string) {
-    return this.http.put(this.apiUrl + '/api/auth/reset_password/' + token + '?email=' + email, user, {responseType: 'text'});
+  resetPassword(user: User, token: string) {
+    return this.http.put(this.apiOrgUrl + '/api/auth/reset_password/' + token, user, {responseType: 'text'});
   }
 
   checkAuthToken(token: string): Observable<MessageOrg> {
-    return this.http.post<MessageOrg>(this.apiUrl + '/api/auth/auth/check_auth_token', token);
+    console.log(token);
+    return this.http.post<MessageOrg>(this.apiOrgUrl + '/api/auth/users/check_auth_token', {access_token: token});
   }
 
   followThisUser(follower: number, followed: number): Observable<FollowerShip> {
-    return this.http.post<FollowerShip>(this.apiUrl + '/api/users/followship/create/' + follower, followed);
+    return this.http.post<FollowerShip>(this.apiOrgUrl + '/api/users/followship/create/' + follower, followed);
   }
 
   unFollowThisUser(id: string): Observable<any> {
-    return this.http.delete<any>(`${this.apiUrl}/api/users/followship/delete/${id}`);
+    return this.http.delete<any>(`${this.apiOrgUrl}/api/users/followship/delete/${id}`);
   }
 
-  getUserById(id: number): Observable<User> {
-    return this.http.get<User>(this.apiUrl + '/api/users/' + id);
+  getUserById(id: string): Observable<User> {
+    return this.http.get<User>(this.apiOrgUrl + '/api/users/' + id);
   }
 
   checkIfOneIsFollowingTheOther(follower_id: number, followed_id: number): Observable<FollowerShip> {
-    return this.http.get<FollowerShip>(`${this.apiUrl}/api/users/followership/follower/${follower_id}/followed/${followed_id}/`);
+    return this.http.get<FollowerShip>(`${this.apiOrgUrl}/api/users/followership/follower/${follower_id}/followed/${followed_id}/`);
+  }
+
+  uploadAvatar(userId: string, file: File) {
+    const formData = new FormData();
+    formData.append('avatar', file);
+    const url = `${this.apiOrgUrl}/api/users/${userId}/avatar`;
+    console.log(url);
+    return this.http.post(`${this.apiOrgUrl}/api/users/${userId}/avatar`, formData);
   }
 
 }

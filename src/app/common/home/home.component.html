@@ -3,12 +3,12 @@
     <div class="col">
       <div *ngIf="currentUser != null">
         <div>
-          <h3>Hi {{currentUser.username}}</h3>
+          <h3>Hi {{currentUser.name}}</h3>
         </div>
         <div>
           <app-create-posting></app-create-posting>
         </div>
-        <div *ngIf="tokenCheck.bool">
+        <div>
           <app-show-posting-list></app-show-posting-list>
         </div>
       </div>
@@ -25,12 +25,6 @@
     </div>
   </div>
   <div class="row">
-    <div class="col">
-      <div class="alert alert-primary" role="alert">
-        A simple primary alert—check it out!
-      </div>
-    </div>
-
     <div class="col">
       <ng-template #content let-modal>
         <div class="modal-header">

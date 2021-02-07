@@ -16,28 +16,16 @@ export class HeaderComponent implements OnInit {
   constructor(
     private behaviorService: BehaviorService
   ) { }
-  /* public menuItems: MenuItem[]; */
 
   ngOnInit() {
     this.getCurrentUser();
-   /*  this.menuItems = [
-      {
-          label: 'Login',
-          icon: 'pi pi-sign-in'
-      },
-      {
-          label: 'Register',
-          icon: 'pi pi-user-plus'
-      }
-    ]; */
     this.getNoticedAfterLoginOrLogout();
   }
-
-  openMobileNavbar() {}
 
   private getNoticedAfterLoginOrLogout() {
     this.behaviorService.loginSubject.subscribe(res => {
       this.reload = res;
+      console.log('reload', this.reload);
       if (this.reload) {
         this.getCurrentUser();
       }
@@ -45,7 +33,9 @@ export class HeaderComponent implements OnInit {
   }
 
   private getCurrentUser() {
+    console.log('get currentUser after reload');
     this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    console.log('currentUser', this.currentUser);
   }
 
 
