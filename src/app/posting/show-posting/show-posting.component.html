@@ -1,7 +1,10 @@
 <div class="container-fluid">
   <div class="row">
     <div class="col-md-4" *ngIf="posting">
-      {{posting.content}}
+      <h5>{{posting.title}}</h5>
+      <div>
+        {{posting.content}}
+      </div>
     </div>
   </div>
   <div class="row">
@@ -15,9 +18,9 @@
     </div>
   </div>
   <div>
-    <app-create-comment [user_id]="currentUser.id" [postingId]="postingId"></app-create-comment>
+    <app-comment-list [postingId]="postingId"></app-comment-list>
   </div>
   <div>
-    <app-comment-list [postingId]="postingId"></app-comment-list>
+    <app-create-comment [user_id]="currentUser.id" [postingId]="postingId"></app-create-comment>
   </div>
 </div>

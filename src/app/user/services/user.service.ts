@@ -23,15 +23,15 @@ export class UserService {
   }
 
   forgotPassword(email: string) {
-    return this.http.post(this.apiOrgUrl + '/api/auth/reset_password', email, {responseType: 'text'});
+    return this.http.post(this.apiOrgUrl + '/api/reset_password/create', email, {responseType: 'text'});
   }
 
-  checkTokenExpired(token: string, email: string) {
-    return this.httpReturnValue = this.http.get(`${this.apiOrgUrl}/api/auth/reset_password/${token}?email=` + email, {responseType: 'text'});
+  checkTokenExpired(token: string) {
+    return this.httpReturnValue = this.http.get(`${this.apiOrgUrl}/api/reset_password/check_token/${token}`, {responseType: 'text'});
   }
 
-  resetPassword(user: User, token: string, email: string) {
-    return this.http.put(this.apiOrgUrl + '/api/auth/reset_password/' + token + '?email=' + email, user, {responseType: 'text'});
+  resetPassword(user: User, token: string) {
+    return this.http.put(this.apiOrgUrl + '/api/auth/reset_password/' + token, user, {responseType: 'text'});
   }
 
   checkAuthToken(token: string): Observable<MessageOrg> {

@@ -1,25 +1,29 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {UserService} from '../../user/services/user.service';
 import {Router} from '@angular/router';
 import {first} from 'rxjs/operators';
+import {Subscription} from 'rxjs';
+import {AlertService} from '../../common/services/alert.service';
 
 @Component({
   selector: 'app-forgot-password',
   templateUrl: './forgot-password.component.html',
   styleUrls: ['./forgot-password.component.css']
 })
-export class ForgotPasswordComponent implements OnInit {
+export class ForgotPasswordComponent implements OnInit, OnDestroy {
 
   forgotForm: FormGroup;
   loading = false;
   submitted = false;
   data: any;
+  subscription: Subscription;
 
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
-    private userService: UserService
+    private userService: UserService,
+    private alertService: AlertService
   ) { }
 
   ngOnInit() {
@@ -41,16 +45,20 @@ export class ForgotPasswordComponent implements OnInit {
     }
 
     this.loading = true;
-    this.userService.forgotPassword(this.forgotForm.value).subscribe(data => {
+    this.subscription = this.userService.forgotPassword(this.forgotForm.value).subscribe(data => {
         console.log(data);
         this.data = data;
-        // this.alertService.success(this.data.message, true);
+        this.alertService.success(this.data, true);
         this.router.navigate(['/login']);
       }, error => {
         console.log('error', error);
         // this.alertService.error(error);
       }
     );
+  }
+
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
   }
 
 }

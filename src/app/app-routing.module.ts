@@ -15,7 +15,7 @@ const routes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'register', component: RegisterComponent},
   {path: 'forgot-password', component: ForgotPasswordComponent},
-  {path: 'reset-password/:token/edit', component: ResetPasswordComponent},
+  {path: 'password-reset/:token/edit', component: ResetPasswordComponent},
   {path: 'posting/:id', component: ShowPostingComponent},
   {path: 'user/:id', component: ShowUserComponent},
   {path: 'upload-image', component: ImageUploadComponent}
