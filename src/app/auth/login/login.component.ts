@@ -42,13 +42,13 @@ export class LoginComponent implements OnInit {
     this.authService.login(this.user).pipe(
       finalize(() => {
         this.behaviorService.setLoginSubject(true);
-        this.alertService.success('Jesus Christ, you logged in successfully, how did you do that?', true);
-        this.router.navigate(['/home']);
         this.loading = false;
       })
     ).subscribe(data => {
       this.data = data;
       localStorage.setItem('currentUser', JSON.stringify(this.data.user));
+      this.alertService.success('Jesus Christ, you logged in successfully, how did you do that?', true);
+      this.router.navigate(['/home']);
     }, error => {
       console.log(error);
     });

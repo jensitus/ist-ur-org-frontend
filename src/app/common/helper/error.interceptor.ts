@@ -17,9 +17,13 @@ export class ErrorInterceptor implements HttpInterceptor {
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     return next.handle(req).pipe(catchError(err => {
       console.log('ErrorInterceptor', err);
-      this.alertService.error(err.status + ': ' + err.error, true);
+      if (err.error.message) {
+        this.alertService.error(err.status + ': ' + err.error.message, true);
+      } else {
+        this.alertService.error(err.status + ': ' + err.error, true);
+      }
       if (err) {
-        this.router.navigate(['/login']);
+        this.router.navigate(['/home']).then(r => {});
       }
       return throwError(err);
     }));
