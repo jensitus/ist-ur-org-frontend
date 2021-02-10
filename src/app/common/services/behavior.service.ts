@@ -11,6 +11,7 @@ export class BehaviorService {
   public loginSubject: BehaviorSubject<boolean> = new BehaviorSubject(null);
   public commentSubject: BehaviorSubject<boolean> = new BehaviorSubject(null);
   public postingSubject: BehaviorSubject<boolean> = new BehaviorSubject(null);
+  public uploadSubject: BehaviorSubject<boolean> = new BehaviorSubject(null);
 
   setLoginSubject(value) {
     if (value) {
@@ -33,6 +34,14 @@ export class BehaviorService {
       this.postingSubject.next(value);
     } else {
       this.postingSubject.next(null);
+    }
+  }
+
+  setUploadSubject(value) {
+    if (value) {
+      this.uploadSubject.next(value);
+    } else {
+      this.uploadSubject.next(null);
     }
   }
 

@@ -27,7 +27,7 @@ import { ShowPostingListComponent } from './posting/show-posting-list/show-posti
 import { CreateFollowerShipComponent } from './user/followerShip/create-follower-ship/create-follower-ship.component';
 import { DeleteFollowerShipComponent } from './user/followerShip/delete-follower-ship/delete-follower-ship.component';
 import { ShowUserComponent } from './user/show-user/show-user.component';
-import { UploadAvatarComponent } from './user/upload-avatar/upload-avatar.component';
+import { UploadComponent } from './common/upload-avatar/upload.component';
 import {ImageUploadComponent} from './common/image-upload/image-upload.component';
 
 @NgModule({
@@ -47,7 +47,7 @@ import {ImageUploadComponent} from './common/image-upload/image-upload.component
     CreateFollowerShipComponent,
     DeleteFollowerShipComponent,
     ShowUserComponent,
-    UploadAvatarComponent,
+    UploadComponent,
     ImageUploadComponent
   ],
   imports: [

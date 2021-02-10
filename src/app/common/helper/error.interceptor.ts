@@ -23,7 +23,7 @@ export class ErrorInterceptor implements HttpInterceptor {
         this.alertService.error(err.status + ': ' + err.error, true);
       }
       if (err) {
-        this.router.navigate(['/home']).then(r => {});
+        this.router.navigate(['/login']).then(r => {});
       }
       return throwError(err);
     }));

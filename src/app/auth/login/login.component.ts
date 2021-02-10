@@ -1,16 +1,17 @@
 import {AuthService} from '../services/auth.service';
-import {Component, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 import {BehaviorService} from '../../common/services/behavior.service';
 import {AlertService} from '../../common/services/alert.service';
 import {finalize} from 'rxjs/operators';
+import {Subject, Subscription} from 'rxjs';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent implements OnInit, OnDestroy {
 
   rememberMe = false;
   password: string;
@@ -20,6 +21,8 @@ export class LoginComponent implements OnInit {
   data: any;
   u: any;
   loading = false;
+
+  private subscription: Subscription;
 
   constructor(
     private authService: AuthService,
@@ -39,7 +42,7 @@ export class LoginComponent implements OnInit {
       email: this.email,
       password: this.password
     };
-    this.authService.login(this.user).pipe(
+    this.subscription = this.authService.login(this.user).pipe(
       finalize(() => {
         this.behaviorService.setLoginSubject(true);
         this.loading = false;
@@ -52,6 +55,10 @@ export class LoginComponent implements OnInit {
     }, error => {
       console.log(error);
     });
+  }
+
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
   }
 
 }
