@@ -15,7 +15,7 @@
         <br>
         Remember Me? <!-- <p-checkbox [(ngModel)]="rememberMe" binary="true" name="rememberMe"></p-checkbox> -->
         <br>
-        <button type="submit" class="btn btn-outline-danger" [disabled]="!loginForm.valid">Login</button>
+        <button type="submit" class="btn btn-outline-danger" [disabled]="loading">Login</button>
       </form>
       <br>
       <a [routerLink]="['/forgot-password']" class="btn btn-link">Forgot Password</a>
