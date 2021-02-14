@@ -7,6 +7,7 @@ import {finalize, takeUntil} from 'rxjs/operators';
 import {UploadType} from '../upload-type.enum';
 import {CommonService} from '../services/common.service';
 import {BehaviorService} from '../services/behavior.service';
+import {UploadService} from '../services/upload.service';
 
 @Component({
   selector: 'app-upload',
@@ -29,7 +30,8 @@ export class UploadComponent implements OnInit, OnDestroy {
     private userService: UserService,
     private formBuilder: FormBuilder,
     private activatedRoute: ActivatedRoute,
-    private behaviorService: BehaviorService
+    private behaviorService: BehaviorService,
+    private uploadService: UploadService
   ) {
   }
 
@@ -58,7 +60,7 @@ export class UploadComponent implements OnInit, OnDestroy {
 
   uploadNow() {
     if (this.uploadType === UploadType.AVATAR) {
-      this.userService.uploadAvatar(this.userId, this.fileToUpload).pipe(
+      this.uploadService.uploadAvatar(this.userId, this.fileToUpload).pipe(
         takeUntil(this.unsubscribe$),
         finalize(() => {
           this.behaviorService.setUploadSubject(true);

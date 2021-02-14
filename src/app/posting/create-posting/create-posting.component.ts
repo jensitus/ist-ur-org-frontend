@@ -18,6 +18,7 @@ export class CreatePostingComponent implements OnInit, OnDestroy {
   submitted = false;
   posting: Posting;
   subscription = Subscription.EMPTY;
+  fileUpload: File;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -39,18 +40,36 @@ export class CreatePostingComponent implements OnInit, OnDestroy {
     if (this.postingForm.invalid) {
       return;
     }
+    const formData = new FormData();
+    if (this.fileUpload) {
+      formData.append('photo', this.fileUpload);
+    }
     this.loading = true;
     this.posting = {
       title: this.postingForm.value.title,
       content: this.postingForm.value.content
     };
     this.postingService.create(this.posting).pipe(
-      finalize(() => this.loading = false)
+      finalize(() => {
+        this.loading = false;
+        this.sendTheFuckingPicToThePosting(formData);
+      })
     ).subscribe(result => {
       // this.getPostingForm();
       this.posting = result;
-      console.log('result', this.posting);
       this.router.navigate(['/posting/' + this.posting.id]);
+    });
+  }
+
+  onFileChange(files: FileList): void {
+    this.fileUpload = files[0];
+    console.log('this.fileUpload', this.fileUpload);
+  }
+
+  private sendTheFuckingPicToThePosting(formData: FormData) {
+    console.log('send the Pic', formData);
+    this.postingService.sendPicToPosting(this.posting.id, formData).subscribe(donner => {
+      console.log('the donner result:', donner);
     });
   }
 

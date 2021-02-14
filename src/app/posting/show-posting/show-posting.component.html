@@ -3,7 +3,13 @@
     <div class="col-md-4" *ngIf="posting">
       <h5>{{posting.title}}</h5>
       <div>
+        {{apiOrgUrl}}
+      </div>
+      <div>
         {{posting.content}}
+      </div>
+      <div *ngFor="let photo of posting.photos">
+        <img [src]="photo" width="80%">
       </div>
     </div>
   </div>

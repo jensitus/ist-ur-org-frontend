@@ -7,6 +7,7 @@ import {User} from '../../user/model/user';
 import {UserService} from '../../user/services/user.service';
 import {finalize, takeUntil} from 'rxjs/operators';
 import {Subject} from 'rxjs';
+import {environment} from '../../../environments/environment';
 
 @Component({
   selector: 'app-show-posting',
@@ -14,6 +15,8 @@ import {Subject} from 'rxjs';
   styleUrls: ['./show-posting.component.css']
 })
 export class ShowPostingComponent implements OnInit, OnDestroy {
+
+  apiOrgUrl: 'http://localhost:3000/';
 
   postingId: string;
   posting: Posting;

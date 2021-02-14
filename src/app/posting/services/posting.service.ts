@@ -20,6 +20,10 @@ export class PostingService {
     return this.http.post<Posting>(`${this.apiOrgUrl}/postings`, post);
   }
 
+  sendPicToPosting(posting_id: string, formData: FormData) {
+    return this.http.put(`${this.apiOrgUrl}/api/postings/${posting_id}/pic`, formData);
+  }
+
   getAllPostings(): Observable<Posting[]> {
     return this.http.get<Posting[]>(`${this.apiOrgUrl}/postings`);
   }

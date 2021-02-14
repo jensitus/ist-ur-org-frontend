@@ -6,4 +6,5 @@ export interface Posting {
   user_id?: string;
   createdAt?: Date;
   updatedAt?: Date;
+  photos?: string[];
 }

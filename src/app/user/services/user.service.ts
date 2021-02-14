@@ -55,12 +55,4 @@ export class UserService {
     return this.http.get<FollowerShip>(`${this.apiOrgUrl}/api/users/followership/follower/${follower_id}/followed/${followed_id}/`);
   }
 
-  uploadAvatar(userId: string, file: File) {
-    const formData = new FormData();
-    formData.append('avatar', file);
-    const url = `${this.apiOrgUrl}/api/users/${userId}/avatar`;
-    console.log(url);
-    return this.http.post(`${this.apiOrgUrl}/api/users/${userId}/avatar`, formData);
-  }
-
 }

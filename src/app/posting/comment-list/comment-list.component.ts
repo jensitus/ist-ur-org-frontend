@@ -20,7 +20,6 @@ export class CommentListComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    console.log('comment list component', this.postingId);
     this.getCommentList();
     this.getReloadOrderFromBehavior();
   }
@@ -28,15 +27,12 @@ export class CommentListComponent implements OnInit {
   private getCommentList() {
     this.commentService.getByPostingId(this.postingId).subscribe(res => {
       this.comments = res;
-      console.log('comments res', res);
-      console.log('these.comments', this.comments);
     });
   }
 
   private getReloadOrderFromBehavior() {
     this.behaviorService.commentSubject.subscribe(res => {
       this.reload = res;
-      console.log('this.reload', this.reload);
       if (this.reload) {
         this.getCommentList();
       }

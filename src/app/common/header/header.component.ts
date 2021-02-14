@@ -25,7 +25,6 @@ export class HeaderComponent implements OnInit {
   private getNoticedAfterLoginOrLogout() {
     this.behaviorService.loginSubject.subscribe(res => {
       this.reload = res;
-      console.log('reload', this.reload);
       if (this.reload) {
         this.getCurrentUser();
       }
@@ -33,9 +32,7 @@ export class HeaderComponent implements OnInit {
   }
 
   private getCurrentUser() {
-    console.log('get currentUser after reload');
     this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
-    console.log('currentUser', this.currentUser);
   }
 
 
