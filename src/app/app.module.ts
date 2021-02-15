@@ -29,6 +29,7 @@ import { DeleteFollowerShipComponent } from './user/followerShip/delete-follower
 import { ShowUserComponent } from './user/show-user/show-user.component';
 import { UploadComponent } from './common/upload/upload.component';
 import {ImageUploadComponent} from './common/image-upload/image-upload.component';
+import { BreadcrumbComponent } from './common/breadcrumb/breadcrumb.component';
 
 @NgModule({
   declarations: [
@@ -48,7 +49,8 @@ import {ImageUploadComponent} from './common/image-upload/image-upload.component
     DeleteFollowerShipComponent,
     ShowUserComponent,
     UploadComponent,
-    ImageUploadComponent
+    ImageUploadComponent,
+    BreadcrumbComponent
   ],
   imports: [
     BrowserModule,
