@@ -1,0 +1,17 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col">
+      <h3 *ngIf="gallery">{{gallery.title}}</h3>
+    </div>
+  </div>
+  <div *ngIf="gallery">
+    <div class="row">
+      <ng-container *ngFor="let g of gallery.photos" class="col-md-4">
+        <div class="col-md-4">
+          <img [src]="g" width="80%" class="mt-5">
+        </div>
+      </ng-container>
+    </div>
+  </div>
+</div>
+

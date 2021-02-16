@@ -3,7 +3,24 @@
     <div class="col">
       <div *ngIf="currentUser != null">
         <div>
-          <app-create-posting></app-create-posting>
+          <nav ngbNav #nav="ngbNav" class="nav-tabs">
+            <ng-container ngbNavItem>
+              <a ngbNavLink>Posting</a>
+              <ng-template ngbNavContent>
+                <app-create-posting></app-create-posting>
+              </ng-template>
+            </ng-container>
+            <ng-container ngbNavItem>
+              <a ngbNavLink>Gallery</a>
+              <ng-template ngbNavContent>
+                <app-create-gallery></app-create-gallery>
+              </ng-template>
+            </ng-container>
+          </nav>
+          <div [ngbNavOutlet]="nav" class="mt-2"></div>
+        </div>
+        <div>
+
         </div>
         <div>
           <app-show-posting-list></app-show-posting-list>

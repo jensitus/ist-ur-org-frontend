@@ -8,6 +8,7 @@ import {ForgotPasswordComponent} from './auth/forgot-password/forgot-password.co
 import {ShowPostingComponent} from './posting/show-posting/show-posting.component';
 import {ShowUserComponent} from './user/show-user/show-user.component';
 import {ImageUploadComponent} from './common/image-upload/image-upload.component';
+import {ShowGalleryComponent} from './gallery/show-gallery/show-gallery.component';
 
 const routes: Routes = [
   {path: 'home', component: HomeComponent},
@@ -18,7 +19,8 @@ const routes: Routes = [
   {path: 'password-reset/:token/edit', component: ResetPasswordComponent},
   {path: 'posting/:id', component: ShowPostingComponent},
   {path: 'user/:id', component: ShowUserComponent},
-  {path: 'upload-image', component: ImageUploadComponent}
+  {path: 'upload-image', component: ImageUploadComponent},
+  {path: 'gallery/:id', component: ShowGalleryComponent}
 ];
 
 @NgModule({
