@@ -27,7 +27,7 @@ export class UserService {
       message: 'aber hallo',
       trueOrFalse: true
     };
-    return this.http.post(this.apiOrgUrl + '/api/module/login', user);
+    return this.http.post(this.apiOrgUrl + '/api/auth/login', user);
   }
 
   logout() {
