@@ -17,6 +17,7 @@ export class HomeComponent implements OnInit {
   currentUser: User;
   closeResult: string;
   tokenCheck: MessageOrg;
+  public isCollapsed = true;
 
   constructor(
     private modalService: NgbModal,
