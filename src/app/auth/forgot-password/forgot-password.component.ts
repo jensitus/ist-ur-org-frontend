@@ -5,6 +5,7 @@ import {Router} from '@angular/router';
 import {first} from 'rxjs/operators';
 import {Subscription} from 'rxjs';
 import {AlertService} from '../../common/services/alert.service';
+import {AuthService} from '../services/auth.service';
 
 @Component({
   selector: 'app-forgot-password',
@@ -23,7 +24,8 @@ export class ForgotPasswordComponent implements OnInit, OnDestroy {
     private formBuilder: FormBuilder,
     private router: Router,
     private userService: UserService,
-    private alertService: AlertService
+    private alertService: AlertService,
+    private authService: AuthService
   ) { }
 
   ngOnInit() {
@@ -45,7 +47,7 @@ export class ForgotPasswordComponent implements OnInit, OnDestroy {
     }
 
     this.loading = true;
-    this.subscription = this.userService.forgotPassword(this.forgotForm.value).subscribe(data => {
+    this.subscription = this.authService.forgotPassword(this.forgotForm.value).subscribe(data => {
         console.log(data);
         this.data = data;
         this.alertService.success(this.data, true);

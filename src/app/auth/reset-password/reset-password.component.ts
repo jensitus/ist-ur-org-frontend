@@ -5,6 +5,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {first, takeUntil} from 'rxjs/operators';
 import {Subject} from 'rxjs';
 import {AlertService} from '../../common/services/alert.service';
+import {AuthService} from '../services/auth.service';
 
 @Component({
   selector: 'app-reset-password',
@@ -28,7 +29,8 @@ export class ResetPasswordComponent implements OnInit, OnDestroy {
     private activatedRoute: ActivatedRoute,
     private formBuilder: FormBuilder,
     private userService: UserService,
-    private alertService: AlertService
+    private alertService: AlertService,
+    private authService: AuthService
   ) { }
 
   ngOnInit() {
@@ -59,7 +61,7 @@ export class ResetPasswordComponent implements OnInit, OnDestroy {
       return;
     }
     this.loading = true;
-    this.userService.resetPassword(this.resetForm.value, this.token).pipe(
+    this.authService.resetPassword(this.resetForm.value, this.token).pipe(
       first(),
       takeUntil(this.notifier)
     ).subscribe(data => {

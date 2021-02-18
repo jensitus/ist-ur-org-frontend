@@ -17,16 +17,16 @@ export class AuthService {
     private behaviorService: BehaviorService
   ) { }
 
-  public login(user: User) {
-    this.retVal = {
-      message: 'aber hallo',
-      trueOrFalse: true
-    };
-    return this.http.post(this.apiOrgUrl + '/api/auth/login', user);
+  register(user: User) {
+    return this.http.post(this.apiOrgUrl + '/api/module/signup', user);
   }
 
-  logout() {
-    localStorage.removeItem('currentUser');
-    this.behaviorService.setLoginSubject(true);
+  forgotPassword(email: string) {
+    return this.http.post(this.apiOrgUrl + '/api/reset_password/create', email, {responseType: 'text'});
   }
+
+  resetPassword(user: User, token: string) {
+    return this.http.put(this.apiOrgUrl + '/api/module/reset_password/' + token, user, {responseType: 'text'});
+  }
+
 }
