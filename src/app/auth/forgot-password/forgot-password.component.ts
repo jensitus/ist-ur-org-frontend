@@ -17,7 +17,7 @@ export class ForgotPasswordComponent implements OnInit, OnDestroy {
   loading = false;
   submitted = false;
   data: any;
-  subscription: Subscription;
+  subscription: Subscription | undefined;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -58,7 +58,9 @@ export class ForgotPasswordComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.subscription.unsubscribe();
+    if (this.subscription) {
+      this.subscription.unsubscribe();
+    }
   }
 
 }
