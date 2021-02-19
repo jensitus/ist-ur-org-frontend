@@ -27,4 +27,8 @@ export class GalleryService {
     return this.http.get<Gallery>(`${this.apiOrgUrl}/api/gallery/${gallery_id}/show`);
   }
 
+  getGalleriesByUserId(user_id: string): Observable<Gallery[]> {
+    return this.http.get<Gallery[]>(`${this.apiOrgUrl}/api/gallery/${user_id}/index`);
+  }
+
 }

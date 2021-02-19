@@ -27,6 +27,8 @@ import {UploadComponent} from './common/upload/upload.component';
 import {ImageUploadComponent} from './common/image-upload/image-upload.component';
 import {CreateGalleryComponent} from './gallery/create-gallery/create-gallery.component';
 import {ShowGalleryComponent} from './gallery/show-gallery/show-gallery.component';
+import { SidebarComponent } from './common/sidebar/sidebar.component';
+import { EditGalleryComponent } from './gallery/edit-gallery/edit-gallery.component';
 
 @NgModule({
   declarations: [
@@ -45,7 +47,9 @@ import {ShowGalleryComponent} from './gallery/show-gallery/show-gallery.componen
     UploadComponent,
     ImageUploadComponent,
     CreateGalleryComponent,
-    ShowGalleryComponent
+    ShowGalleryComponent,
+    SidebarComponent,
+    EditGalleryComponent
   ],
   imports: [
     BrowserModule,
