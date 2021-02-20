@@ -55,7 +55,6 @@ export class CreatePostingComponent implements OnInit, OnDestroy {
         this.sendTheFuckingPicToThePosting(formData);
       })
     ).subscribe(result => {
-      // this.getPostingForm();
       this.posting = result;
       this.router.navigate(['/posting/' + this.posting.id]);
     });
@@ -66,9 +65,7 @@ export class CreatePostingComponent implements OnInit, OnDestroy {
   }
 
   private sendTheFuckingPicToThePosting(formData: FormData) {
-    console.log('send the Pic', formData);
     this.postingService.sendPicToPosting(this.posting.id, formData).subscribe(donner => {
-      console.log('the donner result:', donner);
     });
   }
 

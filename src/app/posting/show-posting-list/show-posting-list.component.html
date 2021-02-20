@@ -1,10 +1,13 @@
 <div *ngFor="let p of postings">
   <div class="mb-3">
     <div>
+      <b>{{p.title}}</b>
+    </div>
+    <div>
       {{p.content}}
     </div>
     <div>
-      <small>{{p.userId}} | {{p.createdAt}} | <a [routerLink]="['/posting/' + p.id]">link</a> </small>
+      <small>{{p.username}} | {{p.created_at | date}} | <a [routerLink]="['/posting/' + p.id]">link</a> </small>
     </div>
   </div>
 </div>

@@ -36,7 +36,7 @@ export class PostingService {
     return this.http.delete<void>(`${this.apiOrgUrl}/postings/${id}`);
   }
 
-  update(post: Posting): Observable<Posting> {
-    return this.http.put<Posting>(`${this.apiOrgUrl}/postings/${post.id}`, post);
+  update(posting_id: string, post: Posting): Observable<Posting> {
+    return this.http.put<Posting>(`${this.apiOrgUrl}/postings/${posting_id}`, post);
   }
 }

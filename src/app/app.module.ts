@@ -29,6 +29,7 @@ import {CreateGalleryComponent} from './gallery/create-gallery/create-gallery.co
 import {ShowGalleryComponent} from './gallery/show-gallery/show-gallery.component';
 import { SidebarComponent } from './common/sidebar/sidebar.component';
 import { EditGalleryComponent } from './gallery/edit-gallery/edit-gallery.component';
+import { EditPostingComponent } from './posting/edit-posting/edit-posting.component';
 
 @NgModule({
   declarations: [
@@ -49,7 +50,8 @@ import { EditGalleryComponent } from './gallery/edit-gallery/edit-gallery.compon
     CreateGalleryComponent,
     ShowGalleryComponent,
     SidebarComponent,
-    EditGalleryComponent
+    EditGalleryComponent,
+    EditPostingComponent
   ],
   imports: [
     BrowserModule,

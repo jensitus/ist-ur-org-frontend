@@ -7,6 +7,7 @@ import {ShowUserComponent} from './user/show-user/show-user.component';
 import {ImageUploadComponent} from './common/image-upload/image-upload.component';
 import {ShowGalleryComponent} from './gallery/show-gallery/show-gallery.component';
 import {EditGalleryComponent} from './gallery/edit-gallery/edit-gallery.component';
+import {EditPostingComponent} from './posting/edit-posting/edit-posting.component';
 
 const routes: Routes = [
   {path: 'home', component: HomeComponent},
@@ -14,6 +15,7 @@ const routes: Routes = [
   {path: 'auth', loadChildren: () => import('./auth/module/auth.module').then((a) => a.AuthModule)},
   {path: 'login', component: LoginComponent},
   {path: 'posting/:id', component: ShowPostingComponent},
+  {path: 'posting/:id/edit', component: EditPostingComponent},
   {path: 'user/:id', component: ShowUserComponent},
   {path: 'upload-image', component: ImageUploadComponent},
   {path: 'gallery/:id', component: ShowGalleryComponent},
