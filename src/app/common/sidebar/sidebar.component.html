@@ -1,0 +1,10 @@
+<div class="card side">
+  <div class="card-body">
+    <div>
+      <b>galleries:</b>
+    </div>
+    <div *ngFor="let gallery of galleries">
+      <a [routerLink]="['/gallery', gallery.id]">{{gallery.title}}</a>
+    </div>
+  </div>
+</div>

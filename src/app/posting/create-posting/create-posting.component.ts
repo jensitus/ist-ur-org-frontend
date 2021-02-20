@@ -63,7 +63,6 @@ export class CreatePostingComponent implements OnInit, OnDestroy {
 
   onFileChange(files: FileList): void {
     this.fileUpload = files[0];
-    console.log('this.fileUpload', this.fileUpload);
   }
 
   private sendTheFuckingPicToThePosting(formData: FormData) {
