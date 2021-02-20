@@ -6,6 +6,7 @@ import {ShowPostingComponent} from './posting/show-posting/show-posting.componen
 import {ShowUserComponent} from './user/show-user/show-user.component';
 import {ImageUploadComponent} from './common/image-upload/image-upload.component';
 import {ShowGalleryComponent} from './gallery/show-gallery/show-gallery.component';
+import {EditGalleryComponent} from './gallery/edit-gallery/edit-gallery.component';
 
 const routes: Routes = [
   {path: 'home', component: HomeComponent},
@@ -15,7 +16,8 @@ const routes: Routes = [
   {path: 'posting/:id', component: ShowPostingComponent},
   {path: 'user/:id', component: ShowUserComponent},
   {path: 'upload-image', component: ImageUploadComponent},
-  {path: 'gallery/:id', component: ShowGalleryComponent}
+  {path: 'gallery/:id', component: ShowGalleryComponent},
+  {path: 'gallery/:id/edit', component: EditGalleryComponent}
 ];
 
 @NgModule({

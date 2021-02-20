@@ -18,7 +18,7 @@ export class AuthService {
   ) { }
 
   register(user: User) {
-    return this.http.post(this.apiOrgUrl + '/api/module/signup', user);
+    return this.http.post(this.apiOrgUrl + '/api/auth/signup', user);
   }
 
   forgotPassword(email: string) {
@@ -26,7 +26,7 @@ export class AuthService {
   }
 
   resetPassword(user: User, token: string) {
-    return this.http.put(this.apiOrgUrl + '/api/module/reset_password/' + token, user, {responseType: 'text'});
+    return this.http.put(this.apiOrgUrl + '/api/auth/reset_password/' + token, user, {responseType: 'text'});
   }
 
 }

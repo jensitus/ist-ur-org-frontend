@@ -4,6 +4,7 @@ import {ForgotPasswordComponent} from '../forgot-password/forgot-password.compon
 import {RegisterComponent} from '../register/register.component';
 import {ResetPasswordComponent} from '../reset-password/reset-password.component';
 import {AuthRoutingModule} from './auth-routing.module';
+import {ReactiveFormsModule} from '@angular/forms';
 
 
 
@@ -13,9 +14,10 @@ import {AuthRoutingModule} from './auth-routing.module';
     RegisterComponent,
     ResetPasswordComponent
   ],
-  imports: [
-    CommonModule,
-    AuthRoutingModule
-  ]
+    imports: [
+        CommonModule,
+        AuthRoutingModule,
+        ReactiveFormsModule
+    ]
 })
 export class AuthModule { }

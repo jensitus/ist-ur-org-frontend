@@ -1,3 +1,5 @@
+import {GalleryPhoto} from './gallery-photo';
+
 export interface Gallery {
   id?: string;
   title: string;
@@ -5,5 +7,5 @@ export interface Gallery {
   user_id: string;
   createdAt?: Date;
   updatedAt?: Date;
-  photos?: string[];
+  photos?: GalleryPhoto[];
 }
