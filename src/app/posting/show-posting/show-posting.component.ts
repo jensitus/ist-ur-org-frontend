@@ -23,7 +23,7 @@ export class ShowPostingComponent implements OnInit, OnDestroy {
   currentUser: User;
   postingUser: User;
   loading = false;
-  notifier = new Subject();
+  notifier$ = new Subject();
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -40,15 +40,13 @@ export class ShowPostingComponent implements OnInit, OnDestroy {
     this.loading = true;
     this.getCurrentUser();
     this.postingService.getById(this.postingId).pipe(
-      takeUntil(this.notifier),
+      takeUntil(this.notifier$),
       finalize(() => {
         this.getPostingUser();
         this.loading = false;
       })
     ).subscribe(result => {
       this.posting = result;
-      console.log('this.posting', this.posting);
-      console.log('this.posting.user_id', this.posting.user_id);
     });
   }
 
@@ -61,14 +59,16 @@ export class ShowPostingComponent implements OnInit, OnDestroy {
   }
 
   private getPostingUser(): void {
-    this.userService.getUserById(this.posting.user_id).subscribe(pu => {
+    this.userService.getUserById(this.posting.user_id).pipe(
+      takeUntil(this.notifier$)
+    ).subscribe(pu => {
       this.postingUser = pu;
     });
   }
 
   ngOnDestroy(): void {
-    this.notifier.next();
-    this.notifier.complete();
+    this.notifier$.next();
+    this.notifier$.complete();
   }
 
 

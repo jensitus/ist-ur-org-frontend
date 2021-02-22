@@ -4,7 +4,8 @@ export interface Posting {
   title?: string;
   content: string;
   user_id?: string;
-  createdAt?: Date;
-  updatedAt?: Date;
+  username?: string;
+  created_at?: Date;
+  updated_at?: Date;
   photos?: string[];
 }
