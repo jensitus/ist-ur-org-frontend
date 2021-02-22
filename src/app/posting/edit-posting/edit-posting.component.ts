@@ -31,7 +31,6 @@ export class EditPostingComponent implements OnInit, OnDestroy {
       switchMap((params) => this.postingService.getById(params.id))
       ).subscribe(post => {
         this.posting = post;
-        console.log(this.posting);
         this.setUpdateForm();
       })
     );
@@ -55,14 +54,11 @@ export class EditPostingComponent implements OnInit, OnDestroy {
 
   onPostingEdit() {
     this.loading = true;
-    console.log(this.updateForm.value);
     this.subscriptions.push(this.postingService.update(this.posting.id, this.updateForm.value).pipe(
       finalize(() => {
         this.router.navigate(['/posting', this.posting.id]);
       })
-    ).subscribe(resultat => {
-      console.log(resultat);
-    }));
+    ).subscribe(() => {}));
   }
 
   ngOnDestroy(): void {
