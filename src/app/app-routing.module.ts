@@ -1,24 +1,25 @@
-import { HomeComponent } from './common/home/home.component';
-import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
-import { LoginComponent } from './auth/login/login.component';
-import { RegisterComponent } from './auth/register/register.component';
-import {ResetPasswordComponent} from './auth/reset-password/reset-password.component';
-import {ForgotPasswordComponent} from './auth/forgot-password/forgot-password.component';
+import {HomeComponent} from './common/home/home.component';
+import {NgModule} from '@angular/core';
+import {RouterModule, Routes} from '@angular/router';
+import {LoginComponent} from './user/login/login.component';
 import {ShowPostingComponent} from './posting/show-posting/show-posting.component';
 import {ShowUserComponent} from './user/show-user/show-user.component';
 import {ImageUploadComponent} from './common/image-upload/image-upload.component';
+import {ShowGalleryComponent} from './gallery/show-gallery/show-gallery.component';
+import {EditGalleryComponent} from './gallery/edit-gallery/edit-gallery.component';
+import {EditPostingComponent} from './posting/edit-posting/edit-posting.component';
 
 const routes: Routes = [
   {path: 'home', component: HomeComponent},
   {path: '', redirectTo: 'home', pathMatch: 'full'},
+  {path: 'auth', loadChildren: () => import('./auth/module/auth.module').then((a) => a.AuthModule)},
   {path: 'login', component: LoginComponent},
-  {path: 'register', component: RegisterComponent},
-  {path: 'forgot-password', component: ForgotPasswordComponent},
-  {path: 'password-reset/:token/edit', component: ResetPasswordComponent},
   {path: 'posting/:id', component: ShowPostingComponent},
+  {path: 'posting/:id/edit', component: EditPostingComponent},
   {path: 'user/:id', component: ShowUserComponent},
-  {path: 'upload-image', component: ImageUploadComponent}
+  {path: 'upload-image', component: ImageUploadComponent},
+  {path: 'gallery/:id', component: ShowGalleryComponent},
+  {path: 'gallery/:id/edit', component: EditGalleryComponent}
 ];
 
 @NgModule({

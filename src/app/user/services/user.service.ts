@@ -5,6 +5,7 @@ import {User} from '../model/user';
 import {Observable} from 'rxjs';
 import {MessageOrg} from '../../common/model/MessageOrg';
 import {FollowerShip} from '../model/follower-ship';
+import {BehaviorService} from '../../common/services/behavior.service';
 
 @Injectable({
   providedIn: 'root'
@@ -12,31 +13,37 @@ import {FollowerShip} from '../model/follower-ship';
 export class UserService {
 
   httpReturnValue: any;
-
   apiOrgUrl = environment.api_org_url;
+  retVal: any;
 
-  constructor(private http: HttpClient) {
+  constructor(
+    private http: HttpClient,
+    private behaviorService: BehaviorService
+    ) {
   }
 
-  register(user: User) {
-    return this.http.post(this.apiOrgUrl + '/api/auth/signup', user);
+  public login(user: User) {
+    this.retVal = {
+      message: 'aber hallo',
+      trueOrFalse: true
+    };
+    return this.http.post(this.apiOrgUrl + '/api/auth/login', user);
   }
 
-  forgotPassword(email: string) {
-    return this.http.post(this.apiOrgUrl + '/api/reset_password/create', email, {responseType: 'text'});
+  logout() {
+    localStorage.removeItem('currentUser');
+    this.behaviorService.setLoginSubject(true);
   }
 
   checkTokenExpired(token: string) {
     return this.httpReturnValue = this.http.get(`${this.apiOrgUrl}/api/reset_password/check_token/${token}`, {responseType: 'text'});
   }
 
-  resetPassword(user: User, token: string) {
-    return this.http.put(this.apiOrgUrl + '/api/auth/reset_password/' + token, user, {responseType: 'text'});
-  }
+
 
   checkAuthToken(token: string): Observable<MessageOrg> {
     console.log(token);
-    return this.http.post<MessageOrg>(this.apiOrgUrl + '/api/auth/users/check_auth_token', {access_token: token});
+    return this.http.post<MessageOrg>(this.apiOrgUrl + '/api/module/users/check_auth_token', {access_token: token});
   }
 
   followThisUser(follower: number, followed: number): Observable<FollowerShip> {
