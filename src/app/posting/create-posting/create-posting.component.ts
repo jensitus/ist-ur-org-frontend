@@ -65,7 +65,8 @@ export class CreatePostingComponent implements OnInit, OnDestroy {
   }
 
   private sendTheFuckingPicToThePosting(formData: FormData) {
-    this.postingService.sendPicToPosting(this.posting.id, formData).subscribe(donner => {
+    console.log(this.posting);
+      this.postingService.sendPicToPosting(this.posting.id, formData).subscribe(donner => {
     });
   }
 

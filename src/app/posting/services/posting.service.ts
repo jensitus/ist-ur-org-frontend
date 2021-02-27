@@ -17,26 +17,26 @@ export class PostingService {
   }
 
   create(post: Posting): Observable<Posting> {
-    return this.http.post<Posting>(`${this.apiOrgUrl}/postings`, post);
+    return this.http.post<Posting>(`${this.apiOrgUrl}/api/postings`, post);
   }
 
   sendPicToPosting(posting_id: string, formData: FormData) {
     return this.http.put(`${this.apiOrgUrl}/api/postings/${posting_id}/pic`, formData);
   }
 
-  getAllPostings(): Observable<Posting[]> {
-    return this.http.get<Posting[]>(`${this.apiOrgUrl}/postings`);
+  getAllPostings(limit?: number, offset?: number): Observable<any> {
+    return this.http.get(`${this.apiOrgUrl}/api/postings` + '/' + limit + '/' + offset);
   }
 
   getById(id: string): Observable<Posting> {
-    return this.http.get<Posting>(`${this.apiOrgUrl}/postings/${id}`);
+    return this.http.get<Posting>(`${this.apiOrgUrl}/api/postings/${id}`);
   }
 
   delete(id: string): Observable<void> {
-    return this.http.delete<void>(`${this.apiOrgUrl}/postings/${id}`);
+    return this.http.delete<void>(`${this.apiOrgUrl}/api/postings/${id}`);
   }
 
   update(posting_id: string, post: Posting): Observable<Posting> {
-    return this.http.put<Posting>(`${this.apiOrgUrl}/postings/${posting_id}`, post);
+    return this.http.put<Posting>(`${this.apiOrgUrl}/api/postings/${posting_id}`, post);
   }
 }
