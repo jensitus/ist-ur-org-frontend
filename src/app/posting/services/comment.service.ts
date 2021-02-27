@@ -21,7 +21,7 @@ export class CommentService {
   }
 
   getByPostingId(postingId: string): Observable<Comment[]> {
-    return this.http.get<Comment[]>(this.apiOrgUrl + '/postings/' + postingId + '/comments/');
+    return this.http.get<Comment[]>(this.apiOrgUrl + '/api/postings/' + postingId + '/comments/');
   }
 
 }
