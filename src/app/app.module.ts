@@ -30,6 +30,7 @@ import {ShowGalleryComponent} from './gallery/show-gallery/show-gallery.componen
 import { SidebarComponent } from './common/sidebar/sidebar.component';
 import { EditGalleryComponent } from './gallery/edit-gallery/edit-gallery.component';
 import { EditPostingComponent } from './posting/edit-posting/edit-posting.component';
+import { GrowingSpinnerComponent } from './common/growing-spinner/growing-spinner.component';
 
 @NgModule({
   declarations: [
@@ -51,7 +52,8 @@ import { EditPostingComponent } from './posting/edit-posting/edit-posting.compon
     ShowGalleryComponent,
     SidebarComponent,
     EditGalleryComponent,
-    EditPostingComponent
+    EditPostingComponent,
+    GrowingSpinnerComponent
   ],
   imports: [
     BrowserModule,
