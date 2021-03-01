@@ -1,5 +1,8 @@
 <div class="container-fluid">
   <div class="row">
+    <div class="col-md-4">
+      <app-sidebar></app-sidebar>
+    </div>
     <div class="col-md-6">
       <div *ngIf="posting">
         <div class="card">
@@ -24,20 +27,17 @@
           </div>
         </div>
       </div>
+      <div class="row">
+        <div class="col-md-4">
+          <button class="btn btn-sm btn-outline-danger" (click)="backLink()">back</button>
+        </div>
+      </div>
+      <div>
+        <app-comment-list [postingId]="postingId"></app-comment-list>
+      </div>
+      <div>
+        <app-create-comment [user_id]="currentUser.id" [postingId]="postingId"></app-create-comment>
+      </div>
     </div>
-  </div>
-  <div class="row">
-
-  </div>
-  <div class="row">
-    <div class="col-md-4">
-      <button class="btn btn-sm btn-outline-danger" (click)="backLink()">back</button>
-    </div>
-  </div>
-  <div>
-    <app-comment-list [postingId]="postingId"></app-comment-list>
-  </div>
-  <div>
-    <app-create-comment [user_id]="currentUser.id" [postingId]="postingId"></app-create-comment>
   </div>
 </div>
