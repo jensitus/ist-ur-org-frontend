@@ -1,7 +1,9 @@
 <div class="container-fluid">
   <div class="row">
     <div class="col-md-4">
-      <app-sidebar></app-sidebar>
+      <ng-container *ngIf="postingUser">
+        <app-sidebar [postingUser]="postingUser" [currentUser]="currentUser"></app-sidebar>
+      </ng-container>
     </div>
     <div class="col-md-6">
       <div *ngIf="posting">

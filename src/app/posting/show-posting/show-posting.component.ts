@@ -63,6 +63,7 @@ export class ShowPostingComponent implements OnInit, OnDestroy {
       takeUntil(this.notifier$)
     ).subscribe(pu => {
       this.postingUser = pu;
+      console.log(this.postingUser);
     });
   }
 

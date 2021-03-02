@@ -1,10 +1,48 @@
 <div class="card side">
   <div class="card-body">
     <div>
-      <b>galleries:</b>
+      <div *ngIf="postingUser">
+        postingUser
+      </div>
+      <div *ngIf="currentUser">
+        currentUser
+      </div>
     </div>
-    <div *ngFor="let gallery of galleries">
-      <a [routerLink]="['/gallery', gallery.id]">{{gallery.title}}</a>
-    </div>
+    <ng-container *ngIf="postingUser">
+      <ng-container *ngIf="postingUser.id == currentUser.id">
+        <div>
+          <img src="http://localhost:3000/{{postingUser.avatar}}" width="50%">
+        </div>
+        <div>
+          {{postingUser.name}}'s
+        </div>
+        <div><b>galleries:</b></div>
+        <div *ngFor="let gallery of galleries">
+          <a [routerLink]="['/gallery', gallery.id]">{{gallery.title}}</a>
+        </div>
+      </ng-container>
+      <ng-container *ngIf="postingUser.id != currentUser.id">
+        <img src="{{api_org_url}}/{{postingUser.avatar}}" width="50%">
+        <div>
+          {{postingUser.name}}
+        </div>
+        <div><b>galleries</b></div>
+        <div *ngFor="let gallery of galleries">
+          <a [routerLink]="['/gallery', gallery.id]">{{gallery.title}}</a>
+        </div>
+      </ng-container>
+    </ng-container>
+    <ng-container *ngIf="currentUser && !postingUser">
+      <img src="{{api_org_url}}/{{currentUser.avatar}}" width="50%">
+      <div>
+        {{currentUser.name}}
+      </div>
+      <div>
+        <b>galleries</b>
+      </div>
+      <div *ngFor="let gallery of galleries">
+        <a [routerLink]="['/gallery', gallery.id]">{{gallery.title}}</a>
+      </div>
+    </ng-container>
   </div>
 </div>
