@@ -59,9 +59,7 @@ export class ShowPostingComponent implements OnInit, OnDestroy {
   }
 
   private getPostingUser(): void {
-    this.userService.getUserById(this.posting.user_id).pipe(
-      takeUntil(this.notifier$)
-    ).subscribe(pu => {
+    this.userService.getUserById(this.posting.user_id).pipe(takeUntil(this.notifier$)).subscribe(pu => {
       this.postingUser = pu;
       console.log(this.postingUser);
     });
@@ -71,7 +69,5 @@ export class ShowPostingComponent implements OnInit, OnDestroy {
     this.notifier$.next();
     this.notifier$.complete();
   }
-
-
 
 }
