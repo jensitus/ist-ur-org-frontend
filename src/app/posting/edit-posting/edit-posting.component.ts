@@ -3,7 +3,7 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Subscription} from 'rxjs';
 import {ActivatedRoute, Router} from '@angular/router';
 import {PostingService} from '../services/posting.service';
-import {finalize, switchMap} from 'rxjs/operators';
+import {finalize, switchMap, takeUntil} from 'rxjs/operators';
 import {Posting} from '../model/Posting';
 
 @Component({
@@ -17,6 +17,7 @@ export class EditPostingComponent implements OnInit, OnDestroy {
   private subscriptions: Subscription[] = [];
   posting: Posting;
   loading = false;
+  filesUpload: File[] = [];
 
   constructor(
     private formBuilder: FormBuilder,
@@ -27,11 +28,18 @@ export class EditPostingComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
+    this.loadPostingForEdit();
+  }
+
+  loadPostingForEdit() {
+    this.loading = true;
     this.subscriptions.push(this.activatedRoute.params.pipe(
       switchMap((params) => this.postingService.getById(params.id))
       ).subscribe(post => {
         this.posting = post;
+        console.log('this.posting', this.posting);
         this.setUpdateForm();
+        this.loading = false;
       })
     );
   }
@@ -54,11 +62,16 @@ export class EditPostingComponent implements OnInit, OnDestroy {
 
   onPostingEdit() {
     this.loading = true;
+    if (this.filesUpload) {
+      this.sendPicToPosting();
+    }
     this.subscriptions.push(this.postingService.update(this.posting.id, this.updateForm.value).pipe(
       finalize(() => {
         this.router.navigate(['/posting', this.posting.id]);
+        this.loading = false;
       })
-    ).subscribe(() => {}));
+    ).subscribe(() => {
+    }));
   }
 
   ngOnDestroy(): void {
@@ -66,6 +79,34 @@ export class EditPostingComponent implements OnInit, OnDestroy {
       for (const s of this.subscriptions) {
         s.unsubscribe();
       }
+    }
+  }
+
+  delete(attachment_id: string) {
+    this.loading = true;
+    this.subscriptions.push(this.postingService.deletePhoto(this.posting.id, attachment_id).pipe(
+      finalize(() => {
+        this.loadPostingForEdit();
+        this.loading = false;
+      })
+    ).subscribe( r => {
+        console.log('r r r r r r', r);
+      }
+    ));
+  }
+
+  onFileChange(files: any) {
+    this.filesUpload.push(files[0]);
+    console.log('this.fileUpload', this.filesUpload);
+  }
+
+  sendPicToPosting() {
+    for (const p of this.filesUpload) {
+      const formData = new FormData();
+      formData.append('photo', p);
+      this.subscriptions.push(this.postingService.sendPicToPosting(this.posting.id, formData).subscribe(res => {
+        console.log(res);
+      }));
     }
   }
 

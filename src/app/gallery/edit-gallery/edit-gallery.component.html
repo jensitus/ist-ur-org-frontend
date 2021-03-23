@@ -3,13 +3,13 @@
     <div class="col-md-4">
       <form [formGroup]="updateForm" (ngSubmit)="onGallerySubmit()">
         <div class="form-group">
-          <input formControlName="title" class="form-control" [disabled]="loading">
+          <input formControlName="title" class="form-control">
         </div>
         <div class="form-group">
-          <textarea formControlName="description" class="form-control" [disabled]="loading"></textarea>
+          <textarea formControlName="description" class="form-control"></textarea>
         </div>
         <div class="form-group">
-          <button class="btn btn-sm btn-outline-dark" [disabled]="loading">update</button>
+          <button class="btn btn-sm btn-outline-dark">update</button>
         </div>
       </form>
       <div *ngFor="let file of filesUpload">

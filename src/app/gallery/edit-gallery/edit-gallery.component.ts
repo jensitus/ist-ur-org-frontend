@@ -91,7 +91,7 @@ export class EditGalleryComponent implements OnInit, OnDestroy {
         this.loading = false;
       })
     ).subscribe(r => {
-      console.log(r);
+      console.log('r', r);
     });
   }
 

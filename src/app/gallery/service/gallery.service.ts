@@ -36,7 +36,6 @@ export class GalleryService {
   }
 
   deletePhoto(gallery_id: string, attachment_id: string): Observable<any> {
-    console.log(attachment_id);
     return this.http.delete(`${this.apiOrgUrl}/api/gallery/${gallery_id}/delete/${attachment_id}`);
   }
 

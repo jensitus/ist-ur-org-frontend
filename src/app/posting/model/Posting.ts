@@ -1,3 +1,5 @@
+import {PhotoDto} from '../../common/model/photo-dto';
+
 export interface Posting {
   id?: string;
   slug?: number;
@@ -7,5 +9,5 @@ export interface Posting {
   username?: string;
   created_at?: Date;
   updated_at?: Date;
-  photos?: string[];
+  photos?: PhotoDto[];
 }
