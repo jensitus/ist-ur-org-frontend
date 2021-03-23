@@ -57,7 +57,7 @@ export class EditGalleryComponent implements OnInit, OnDestroy {
       this.sendPicToGallery();
     }
     if (this.gallery.title !== this.updateForm.value.title || this.gallery.description !== this.updateForm.value.description) {
-      console.log(true);
+      console.log('zack zement', true);
     }
 
     this.galleryService.updateGallery(this.gallery.id, this.updateForm.value).pipe(
