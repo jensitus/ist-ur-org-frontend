@@ -9,7 +9,26 @@
           <textarea formControlName="content" class="form-control"></textarea>
         </div>
         <button class="btn btn-sm btn-outline-primary">ab die post</button>
+        <div class="form-group">
+          <div>
+            <label>photo</label>
+          </div>
+          <input type="file" (change)="onFileChange($event.target.files)" class="btn btn-sm btn-outline-success">
+        </div>
       </form>
     </div>
+    <div class="col-md-6">
+      <ng-container *ngIf="posting.photos">
+        <ng-container *ngFor="let p of posting.photos">
+          <div>
+            <img [src]="p.photo_url" width="80%">
+          </div>
+          <div>
+            <button class="btn btn-sm btn-outline-success" (click)="delete(p.attachment_id)">delete</button>
+          </div>
+        </ng-container>
+      </ng-container>
+    </div>
   </div>
+
 </div>

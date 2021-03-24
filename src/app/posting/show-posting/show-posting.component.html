@@ -8,16 +8,23 @@
         <div class="card">
           <div class="card-body">
             <div class="mt-2 mb-2">
-              <b>{{posting.title}}</b>
+              <div class="row">
+                <div class="col-md-12">
+                  <b>{{posting.title}}</b>
+                </div>
+              </div>
             </div>
-            <div>
-              {{apiOrgUrl}}
+            <div class="row">
+              <div class="col-md-12">
+                {{posting.content}}
+              </div>
             </div>
-            <div>
-              {{posting.content}}
-            </div>
-            <div *ngFor="let photo of posting.photos">
-              <img [src]="photo" width="100%">
+            <div class="row">
+              <div *ngFor="let photo of posting.photos">
+                <div class="col m-1">
+                  <img [src]="photo.photo_url" width="100%">
+                </div>
+              </div>
             </div>
             <div class="mt-3" *ngIf="postingUser">
               <small>

@@ -39,4 +39,8 @@ export class PostingService {
   update(posting_id: string, post: Posting): Observable<Posting> {
     return this.http.put<Posting>(`${this.apiOrgUrl}/api/postings/${posting_id}`, post);
   }
+
+  deletePhoto(postingId: string, attachmentId: string): Observable<any> {
+    return this.http.delete(`${this.apiOrgUrl}/api/postings/${postingId}/delete/${attachmentId}`);
+  }
 }

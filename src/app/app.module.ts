@@ -9,7 +9,7 @@ import {AppRoutingModule} from './app-routing.module';
 import {LoginComponent} from './user/login/login.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {UserService} from './user/services/user.service';
-import {JwtInterceptor} from './common/helper/jwt.interceptor';
+import {JwtInterceptor} from './common/interceptor/jwt.interceptor';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {AuthService} from './auth/services/auth.service';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
@@ -17,7 +17,7 @@ import {CreatePostingComponent} from './posting/create-posting/create-posting.co
 import {ShowPostingComponent} from './posting/show-posting/show-posting.component';
 import {CreateCommentComponent} from './posting/create-comment/create-comment.component';
 import {CommentListComponent} from './posting/comment-list/comment-list.component';
-import {ErrorInterceptor} from './common/helper/error.interceptor';
+import {ErrorInterceptor} from './common/interceptor/error.interceptor';
 import {AppCommonModule} from './common/app-common/app-common.module';
 import {ShowPostingListComponent} from './posting/show-posting-list/show-posting-list.component';
 import {CreateFollowerShipComponent} from './user/followerShip/create-follower-ship/create-follower-ship.component';

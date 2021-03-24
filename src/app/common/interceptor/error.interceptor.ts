@@ -17,6 +17,10 @@ export class ErrorInterceptor implements HttpInterceptor {
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     return next.handle(req).pipe(catchError(err => {
       console.log('ErrorInterceptor', err.status);
+      if (err.status === 200) {
+        console.log('yeah, 200');
+        return;
+      }
       if (err.status === 500) {
         this.alertService.error(err.status + ': internal Server Error', true);
       }
