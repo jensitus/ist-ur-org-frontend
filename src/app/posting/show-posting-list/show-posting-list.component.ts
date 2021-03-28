@@ -1,5 +1,5 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import {Posting} from '../model/Posting';
+import {Micropost} from '../model/Micropost';
 import {PostingService} from '../services/posting.service';
 import {finalize, takeUntil} from 'rxjs/operators';
 import {UserService} from '../../user/services/user.service';
@@ -12,9 +12,9 @@ import {Subject} from 'rxjs';
 })
 export class ShowPostingListComponent implements OnInit, OnDestroy {
 
-  postingMap: Map<number, Posting[]>;
-  postings: Posting[];
-  posting: Posting;
+  micropostMap: Map<number, Micropost[]>;
+  microposts: Micropost[];
+  micropost: Micropost;
   count: number;
   private notifier$ = new Subject();
   loading = false;
@@ -37,14 +37,15 @@ export class ShowPostingListComponent implements OnInit, OnDestroy {
   }
 
   getPostingList(limit?: number, offset?: number) {
-    this.loading = true
+    this.loading = true;
     this.postingService.getAllPostings(limit, offset).pipe(
       takeUntil(this.notifier$),
       finalize(() => this.loading = false)
     ).subscribe(result => {
-      this.postingMap = result;
+      console.log('result', result);
+      this.micropostMap = result;
       this.count = result.count;
-      this.postings = result.postings;
+      this.microposts = result.microposts;
       this.addUsernameToPosting();
     });
   }
@@ -59,8 +60,8 @@ export class ShowPostingListComponent implements OnInit, OnDestroy {
   }
 
   private addUsernameToPosting() {
-    if (this.postings.values()) {
-      for (const p of this.postings) {
+    if (this.microposts.values()) {
+      for (const p of this.microposts) {
         this.userService.getUserById(p.user_id).pipe(
           takeUntil(this.notifier$)
         ).subscribe(pu => {

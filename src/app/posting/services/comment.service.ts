@@ -3,6 +3,7 @@ import {environment} from '../../../environments/environment';
 import {HttpClient} from '@angular/common/http';
 import {CreateCommentDto} from '../model/create-comment-dto';
 import {Observable} from 'rxjs';
+import {Comment} from '../model/comment';
 
 @Injectable({
   providedIn: 'root'
@@ -17,11 +18,11 @@ export class CommentService {
   }
 
   create(comment: CreateCommentDto): Observable<Comment> {
-    return this.http.post<Comment>(this.apiOrgUrl + '/postings/' + comment.postingId + '/comments/', comment);
+    return this.http.post<Comment>(this.apiOrgUrl + '/api/microposts/' + comment.micropost_id + '/comments/', comment);
   }
 
-  getByPostingId(postingId: string): Observable<Comment[]> {
-    return this.http.get<Comment[]>(this.apiOrgUrl + '/api/postings/' + postingId + '/comments/');
+  getByPostingId(micropostId: string): Observable<Comment[]> {
+    return this.http.get<Comment[]>(this.apiOrgUrl + '/api/microposts/' + micropostId + '/comments/');
   }
 
 }

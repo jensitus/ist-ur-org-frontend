@@ -4,7 +4,7 @@ import {Subscription} from 'rxjs';
 import {ActivatedRoute, Router} from '@angular/router';
 import {PostingService} from '../services/posting.service';
 import {finalize, switchMap, takeUntil} from 'rxjs/operators';
-import {Posting} from '../model/Posting';
+import {Micropost} from '../model/Micropost';
 
 @Component({
   selector: 'app-edit-posting',
@@ -15,7 +15,7 @@ export class EditPostingComponent implements OnInit, OnDestroy {
 
   updateForm: FormGroup;
   private subscriptions: Subscription[] = [];
-  posting: Posting;
+  posting: Micropost;
   loading = false;
   filesUpload: File[] = [];
 

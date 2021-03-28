@@ -1,13 +1,10 @@
-<div>
-  <div *ngFor="let c of comments">
-    <div>
-      ----------------------------------
-    </div>
+<div >
+  <div *ngFor="let c of comments" class="m-3">
     <div>
       {{c.body}}
     </div>
     <div>
-      <small>{{c.userId}} | {{c.postingId}} | {{c.createdAt}}</small>
+      <small><a [routerLink]="['/user/', c.user_id]">{{c.username}}</a> | {{c.created_at | date}}</small>
     </div>
   </div>
 </div>

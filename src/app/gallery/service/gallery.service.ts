@@ -39,4 +39,8 @@ export class GalleryService {
     return this.http.delete(`${this.apiOrgUrl}/api/gallery/${gallery_id}/delete/${attachment_id}`);
   }
 
+  getSinglePhoto(): Observable<any> {
+    return null;
+  }
+
 }

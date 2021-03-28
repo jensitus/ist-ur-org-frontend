@@ -1,7 +1,7 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {PostingService} from '../services/posting.service';
-import {Posting} from '../model/Posting';
+import {Micropost} from '../model/Micropost';
 import {Location} from '@angular/common';
 import {User} from '../../user/model/user';
 import {UserService} from '../../user/services/user.service';
@@ -18,8 +18,8 @@ export class ShowPostingComponent implements OnInit, OnDestroy {
 
   apiOrgUrl: 'http://localhost:3000/';
 
-  postingId: string;
-  posting: Posting;
+  micropostId: string;
+  micropost: Micropost;
   currentUser: User;
   postingUser: User;
   loading = false;
@@ -32,21 +32,22 @@ export class ShowPostingComponent implements OnInit, OnDestroy {
     private userService: UserService
   ) {
     this.activatedRoute.params.subscribe(params => {
-      this.postingId = params['id'];
+      this.micropostId = params['id'];
     });
   }
 
   ngOnInit() {
+    console.log('this.micropostId', this.micropostId);
     this.loading = true;
     this.getCurrentUser();
-    this.postingService.getById(this.postingId).pipe(
+    this.postingService.getById(this.micropostId).pipe(
       takeUntil(this.notifier$),
       finalize(() => {
-        this.getPostingUser();
+        // this.getPostingUser();
         this.loading = false;
       })
     ).subscribe(result => {
-      this.posting = result;
+      this.micropost = result;
     });
   }
 
@@ -59,10 +60,12 @@ export class ShowPostingComponent implements OnInit, OnDestroy {
   }
 
   private getPostingUser(): void {
-    this.userService.getUserById(this.posting.user_id).pipe(
+    this.userService.getUserById(this.micropost.user_id).pipe(
       takeUntil(this.notifier$)
     ).subscribe(pu => {
       this.postingUser = pu;
+      console.log(this.micropost.user_id);
+      console.log(this.postingUser);
     });
   }
 

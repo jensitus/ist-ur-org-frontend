@@ -1,6 +1,6 @@
 import {PhotoDto} from '../../common/model/photo-dto';
 
-export interface Posting {
+export interface Micropost {
   id?: string;
   slug?: number;
   title?: string;

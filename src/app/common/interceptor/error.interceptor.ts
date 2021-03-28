@@ -20,17 +20,20 @@ export class ErrorInterceptor implements HttpInterceptor {
       if (err.status === 200) {
         console.log('yeah, 200');
         return;
-      }
-      if (err.status === 500) {
+      } else if (err.status === 500) {
         this.alertService.error(err.status + ': internal Server Error', true);
-      }
-      if (err.error.message) {
-        this.alertService.error(err.status + ': ' + err.error.message, true);
-      } else {
+        // } else if (err.error.message) {
+        //   this.alertService.error(err.status + ': ' + err.error.message, true);
+      } else if (err.status === 404) {
+        if (err.error.message === 'Couldn\'t find Micropost without an ID') {
+          this.alertService.success('cool', false);
+        } else {
+          this.alertService.error(err.status + ': ' + err.error.message, true);
+        }
+      } else if (err) {
         this.alertService.error(err.status + ': ' + err.error, true);
-      }
-      if (err) {
-        this.router.navigate(['/login']).then(r => {});
+        this.router.navigate(['/login']).then(r => {
+        });
       }
       return throwError(err);
     }));

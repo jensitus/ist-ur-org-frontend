@@ -1,9 +1,9 @@
 <div class="container">
   <div class="row">
-    <div class="col-xl-4" *ngIf="message">
-      <div *ngIf="message.type == 'success'" class="alert alert-success">
+    <div class="col-xl-12" *ngIf="message">
+      <ngb-alert *ngIf="message.type == 'success'" type="success">
         {{message.text}}
-      </div>
+      </ngb-alert>
       <div *ngIf="message.type == 'error'" class="alert alert-danger">
         {{message.text}}
       </div>

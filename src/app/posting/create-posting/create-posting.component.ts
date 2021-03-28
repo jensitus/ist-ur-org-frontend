@@ -1,6 +1,6 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {Posting} from '../model/Posting';
+import {Micropost} from '../model/Micropost';
 import {PostingService} from '../services/posting.service';
 import {Router} from '@angular/router';
 import {Subscription} from 'rxjs';
@@ -16,7 +16,7 @@ export class CreatePostingComponent implements OnInit, OnDestroy {
   postingForm: FormGroup;
   loading = false;
   submitted = false;
-  posting: Posting;
+  posting: Micropost;
   subscription = Subscription.EMPTY;
   fileUpload: File;
 

@@ -1,6 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {Posting} from '../model/Posting';
+import {Micropost} from '../model/Micropost';
 import {CreateCommentDto} from '../model/create-comment-dto';
 import {CommentService} from '../services/comment.service';
 import {BehaviorService} from '../../common/services/behavior.service';
@@ -28,6 +28,7 @@ export class CreateCommentComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    console.log('this.postingId', this.postingId);
     this.getCommentForm();
   }
 
@@ -40,7 +41,7 @@ export class CreateCommentComponent implements OnInit {
     this.createCommentDto = {
       body: this.commentForm.value.body,
       user_id: this.user_id,
-      postingId: this.postingId
+      micropost_id: this.postingId
     };
     console.log('this.createCommentDto', this.createCommentDto);
     this.commentService.create(this.createCommentDto).subscribe(resultat => {

@@ -1,5 +1,5 @@
 import {environment} from '../../../environments/environment';
-import {Posting} from '../model/Posting';
+import {Micropost} from '../model/Micropost';
 import {HttpClient} from '@angular/common/http';
 import {Injectable} from '@angular/core';
 import {Observable} from 'rxjs';
@@ -16,31 +16,31 @@ export class PostingService {
   ) {
   }
 
-  create(post: Posting): Observable<Posting> {
-    return this.http.post<Posting>(`${this.apiOrgUrl}/api/postings`, post);
+  create(post: Micropost): Observable<Micropost> {
+    return this.http.post<Micropost>(`${this.apiOrgUrl}/api/microposts`, post);
   }
 
   sendPicToPosting(posting_id: string, formData: FormData) {
-    return this.http.put(`${this.apiOrgUrl}/api/postings/${posting_id}/pic`, formData);
+    return this.http.put(`${this.apiOrgUrl}/api/microposts/${posting_id}/pic`, formData);
   }
 
   getAllPostings(limit?: number, offset?: number): Observable<any> {
-    return this.http.get(`${this.apiOrgUrl}/api/postings` + '/' + limit + '/' + offset);
+    return this.http.get(`${this.apiOrgUrl}/api/microposts` + '/' + limit + '/' + offset);
   }
 
-  getById(id: string): Observable<Posting> {
-    return this.http.get<Posting>(`${this.apiOrgUrl}/api/postings/${id}`);
+  getById(id: string): Observable<Micropost> {
+    return this.http.get<Micropost>(`${this.apiOrgUrl}/api/microposts/${id}`);
   }
 
   delete(id: string): Observable<void> {
-    return this.http.delete<void>(`${this.apiOrgUrl}/api/postings/${id}`);
+    return this.http.delete<void>(`${this.apiOrgUrl}/api/microposts/${id}`);
   }
 
-  update(posting_id: string, post: Posting): Observable<Posting> {
-    return this.http.put<Posting>(`${this.apiOrgUrl}/api/postings/${posting_id}`, post);
+  update(posting_id: string, post: Micropost): Observable<Micropost> {
+    return this.http.put<Micropost>(`${this.apiOrgUrl}/api/microposts/${posting_id}`, post);
   }
 
   deletePhoto(postingId: string, attachmentId: string): Observable<any> {
-    return this.http.delete(`${this.apiOrgUrl}/api/postings/${postingId}/delete/${attachmentId}`);
+    return this.http.delete(`${this.apiOrgUrl}/api/microposts/${postingId}/delete/${attachmentId}`);
   }
 }

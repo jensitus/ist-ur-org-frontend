@@ -10,8 +10,8 @@ import {BehaviorService} from '../../common/services/behavior.service';
 })
 export class CommentListComponent implements OnInit {
 
-  @Input() postingId: string;
-  comments: any;
+  @Input() micropostId: string;
+  comments: Comment[];
   reload = false;
 
   constructor(
@@ -20,13 +20,15 @@ export class CommentListComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    console.log('this.micropostId', this.micropostId);
     this.getCommentList();
     this.getReloadOrderFromBehavior();
   }
 
   private getCommentList() {
-    this.commentService.getByPostingId(this.postingId).subscribe(res => {
+    this.commentService.getByPostingId(this.micropostId).subscribe(res => {
       this.comments = res;
+      console.log('this.comments', this.comments);
     });
   }
 

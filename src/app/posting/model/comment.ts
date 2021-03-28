@@ -2,9 +2,10 @@ export interface Comment {
 
   id: string;
   body: string;
-  postingId: string;
-  userId: string;
-  createdAt: Date;
-  updatedAt: Date;
+  username: string;
+  micropost_id: string;
+  user_id: string;
+  created_at: Date;
+  updated_at: Date;
 
 }

@@ -4,23 +4,23 @@
       <app-sidebar></app-sidebar>
     </div>
     <div class="col-md-6">
-      <div *ngIf="posting">
+      <div *ngIf="micropost">
         <div class="card">
           <div class="card-body">
             <div class="mt-2 mb-2">
               <div class="row">
                 <div class="col-md-12">
-                  <b>{{posting.title}}</b>
+                  <b>{{micropost.title}}</b>
                 </div>
               </div>
             </div>
             <div class="row">
               <div class="col-md-12">
-                {{posting.content}}
+                {{micropost.content}}
               </div>
             </div>
             <div class="row">
-              <div *ngFor="let photo of posting.photos">
+              <div *ngFor="let photo of micropost.photos">
                 <div class="col m-1">
                   <img [src]="photo.photo_url" width="100%">
                 </div>
@@ -28,7 +28,7 @@
             </div>
             <div class="mt-3" *ngIf="postingUser">
               <small>
-                <a [routerLink]="['/user/' + postingUser.id]">{{postingUser.name}}</a> | {{posting.created_at | date}}
+                <a [routerLink]="['/user/' + postingUser.id]">{{postingUser.name}}</a> | {{micropost.created_at | date}}
               </small>
             </div>
           </div>
@@ -40,10 +40,10 @@
         </div>
       </div>
       <div>
-        <app-comment-list [postingId]="postingId"></app-comment-list>
+        <app-comment-list [micropostId]="micropostId"></app-comment-list>
       </div>
       <div>
-        <app-create-comment [user_id]="currentUser.id" [postingId]="postingId"></app-create-comment>
+        <app-create-comment [user_id]="currentUser.id" [postingId]="micropostId"></app-create-comment>
       </div>
     </div>
   </div>

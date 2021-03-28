@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {User} from '../../user/model/user';
 import {ModalDismissReasons, NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {PostingService} from '../../posting/services/posting.service';
-import {Posting} from '../../posting/model/Posting';
+import {Micropost} from '../../posting/model/Micropost';
 import {CommonService} from '../services/common.service';
 import {UserService} from '../../user/services/user.service';
 import {MessageOrg} from '../model/MessageOrg';
@@ -56,6 +56,10 @@ export class HomeComponent implements OnInit {
     } else {
       return  `with: ${reason}`;
     }
+  }
+
+  private getRandomPhoto() {
+
   }
 
 }
