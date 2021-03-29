@@ -30,6 +30,9 @@
               <small>
                 <a [routerLink]="['/user/' + postingUser.id]">{{postingUser.name}}</a> | {{micropost.created_at | date}}
               </small>
+              <small *ngIf="currentUser.id == postingUser.id">
+                | <a [routerLink]="['/posting/', micropost.id, 'edit']">edit</a>
+              </small>
             </div>
           </div>
         </div>
