@@ -82,9 +82,9 @@ export class EditGalleryComponent implements OnInit, OnDestroy {
     });
   }
 
-  delete(attachment_id: string) {
+  delete(photo_id: string) {
     this.loading = true;
-    this.galleryService.deletePhoto(this.gallery.id, attachment_id).pipe(
+    this.galleryService.deletePhoto(this.gallery.id, photo_id).pipe(
       takeUntil(this.destroy$),
       finalize(() => {
         this.getGalleryPhotos();
@@ -99,7 +99,8 @@ export class EditGalleryComponent implements OnInit, OnDestroy {
     if (this.filesUpload) {
       for (const p of this.filesUpload) {
         const formData = new FormData();
-        formData.append('photo', p);
+        formData.append('image', p);
+        console.log('formData', formData);
         this.galleryService.sendPicToGallery(this.gallery.id, formData).pipe(
           takeUntil(this.destroy$)
         ).subscribe(res => {

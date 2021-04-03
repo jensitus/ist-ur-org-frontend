@@ -82,9 +82,9 @@ export class EditPostingComponent implements OnInit, OnDestroy {
     }
   }
 
-  delete(attachment_id: string) {
+  delete(photo_id: string) {
     this.loading = true;
-    this.subscriptions.push(this.postingService.deletePhoto(this.posting.id, attachment_id).pipe(
+    this.subscriptions.push(this.postingService.deletePhoto(this.posting.id, photo_id).pipe(
       finalize(() => {
         this.loadPostingForEdit();
         this.loading = false;
@@ -103,7 +103,10 @@ export class EditPostingComponent implements OnInit, OnDestroy {
   sendPicToPosting() {
     for (const p of this.filesUpload) {
       const formData = new FormData();
-      formData.append('photo', p);
+      formData.append('image', p);
+      console.log(this.filesUpload);
+      console.log(p);
+      console.log('formData', formData);
       this.subscriptions.push(this.postingService.sendPicToPosting(this.posting.id, formData).subscribe(res => {
         console.log(res);
       }));

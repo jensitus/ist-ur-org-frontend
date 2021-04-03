@@ -42,7 +42,7 @@ export class CreatePostingComponent implements OnInit, OnDestroy {
     }
     const formData = new FormData();
     if (this.fileUpload) {
-      formData.append('photo', this.fileUpload);
+      formData.append('image', this.fileUpload);
     }
     this.loading = true;
     this.posting = {

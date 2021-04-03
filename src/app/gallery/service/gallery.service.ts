@@ -35,8 +35,8 @@ export class GalleryService {
     return this.http.put<Gallery>(`${this.apiOrgUrl}/api/gallery/${gallery_id}/update`, gallery);
   }
 
-  deletePhoto(gallery_id: string, attachment_id: string): Observable<any> {
-    return this.http.delete(`${this.apiOrgUrl}/api/gallery/${gallery_id}/delete/${attachment_id}`);
+  deletePhoto(gallery_id: string, photo_id: string): Observable<any> {
+    return this.http.delete(`${this.apiOrgUrl}/api/gallery/${gallery_id}/delete/${photo_id}`);
   }
 
   getSinglePhoto(): Observable<any> {

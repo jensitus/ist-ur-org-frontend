@@ -40,7 +40,7 @@ export class PostingService {
     return this.http.put<Micropost>(`${this.apiOrgUrl}/api/microposts/${posting_id}`, post);
   }
 
-  deletePhoto(postingId: string, attachmentId: string): Observable<any> {
-    return this.http.delete(`${this.apiOrgUrl}/api/microposts/${postingId}/delete/${attachmentId}`);
+  deletePhoto(postingId: string, photo_id: string): Observable<any> {
+    return this.http.delete(`${this.apiOrgUrl}/api/microposts/${postingId}/delete/${photo_id}`);
   }
 }

@@ -66,7 +66,9 @@ export class CreateGalleryComponent implements OnInit {
   private sendTheFuckingPicToTheGallery() {
     for (const file of this.filesUpload) {
       const formData = new FormData();
-      formData.append('photo', file);
+      console.log('formData', formData);
+      formData.append('image', file);
+      console.log('formData', formData);
       this.galleryService.sendPicToGallery(this.gallery.id, formData).pipe().subscribe(res => {
         console.log(res);
       });
