@@ -54,7 +54,7 @@ export class EditGalleryComponent implements OnInit, OnDestroy {
 
   onGallerySubmit() {
     if (this.filesUpload) {
-      this.sendPicToGallery();
+
     }
     if (this.gallery.title !== this.updateForm.value.title || this.gallery.description !== this.updateForm.value.description) {
       console.log('zack zement', true);
@@ -63,6 +63,7 @@ export class EditGalleryComponent implements OnInit, OnDestroy {
     this.galleryService.updateGallery(this.gallery.id, this.updateForm.value).pipe(
       takeUntil(this.destroy$),
       finalize(() => {
+        this.sendPicToGallery();
         this.loading = false;
         this.router.navigate(['/gallery/', this.gallery.id]);
       })
