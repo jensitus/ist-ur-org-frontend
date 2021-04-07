@@ -5,6 +5,7 @@ import {finalize, switchMap, takeUntil} from 'rxjs/operators';
 import {GalleryService} from '../service/gallery.service';
 import {Subject} from 'rxjs';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
+import {PhotoDto} from '../../common/model/photo-dto';
 
 @Component({
   selector: 'app-edit-gallery',
@@ -63,7 +64,6 @@ export class EditGalleryComponent implements OnInit, OnDestroy {
     this.galleryService.updateGallery(this.gallery.id, this.updateForm.value).pipe(
       takeUntil(this.destroy$),
       finalize(() => {
-        this.sendPicToGallery();
         this.loading = false;
         this.router.navigate(['/gallery/', this.gallery.id]);
       })
