@@ -5,6 +5,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {PostingService} from '../services/posting.service';
 import {finalize, switchMap, takeUntil} from 'rxjs/operators';
 import {Micropost} from '../model/Micropost';
+import {BehaviorService} from '../../common/services/behavior.service';
 
 @Component({
   selector: 'app-edit-posting',
@@ -23,12 +24,14 @@ export class EditPostingComponent implements OnInit, OnDestroy {
     private formBuilder: FormBuilder,
     private activatedRoute: ActivatedRoute,
     private postingService: PostingService,
-    private router: Router
+    private router: Router,
+    private behaviorService: BehaviorService
   ) {
   }
 
   ngOnInit(): void {
     this.loadPostingForEdit();
+    this.getNoticeWhenPhotoChanged();
   }
 
   loadPostingForEdit() {
@@ -63,7 +66,7 @@ export class EditPostingComponent implements OnInit, OnDestroy {
   onPostingEdit() {
     this.loading = true;
     if (this.filesUpload) {
-      this.sendPicToPosting();
+      // this.sendPicToPosting();
     }
     this.subscriptions.push(this.postingService.update(this.posting.id, this.updateForm.value).pipe(
       finalize(() => {
@@ -111,6 +114,14 @@ export class EditPostingComponent implements OnInit, OnDestroy {
         console.log(res);
       }));
     }
+  }
+
+  getNoticeWhenPhotoChanged() {
+    this.subscriptions.push(this.behaviorService.photoSubject.subscribe(res => {
+      if (res === true) {
+        this.loadPostingForEdit();
+      }
+    }));
   }
 
 }

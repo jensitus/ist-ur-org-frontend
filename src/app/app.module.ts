@@ -31,6 +31,7 @@ import { SidebarComponent } from './common/sidebar/sidebar.component';
 import { EditGalleryComponent } from './gallery/edit-gallery/edit-gallery.component';
 import { EditPostingComponent } from './posting/edit-posting/edit-posting.component';
 import { GrowingSpinnerComponent } from './common/growing-spinner/growing-spinner.component';
+import { AddAndRemovePhotoComponent } from './common/add-and-remove-photo/add-and-remove-photo.component';
 
 @NgModule({
   declarations: [
@@ -53,7 +54,8 @@ import { GrowingSpinnerComponent } from './common/growing-spinner/growing-spinne
     SidebarComponent,
     EditGalleryComponent,
     EditPostingComponent,
-    GrowingSpinnerComponent
+    GrowingSpinnerComponent,
+    AddAndRemovePhotoComponent
   ],
   imports: [
     BrowserModule,
