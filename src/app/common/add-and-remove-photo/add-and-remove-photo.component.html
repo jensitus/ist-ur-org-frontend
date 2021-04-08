@@ -1,0 +1,21 @@
+<div class="form-group">
+  <div>
+    <label>photo</label>
+  </div>
+  <div>
+    <input type="file" (change)="onFileChange($event.target.files)" class="btn btn-sm btn-outline-success">
+  </div>
+  <div>
+    <button class="btn btn-sm btn-outline-danger" (click)="sendPicToPosting()">ab mit dem Bild</button>
+  </div>
+</div>
+<ng-container *ngIf="photos">
+  <ng-container *ngFor="let p of photos">
+    <div>
+      <img [src]="p.photo_url" width="80%">
+    </div>
+    <div>
+      <button class="btn btn-sm btn-outline-success" (click)="delete(p.photo_id)">delete</button>
+    </div>
+  </ng-container>
+</ng-container>
