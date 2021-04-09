@@ -2,8 +2,9 @@ import {Component, Input, OnDestroy, OnInit} from '@angular/core';
 import {PostingService} from '../../posting/services/posting.service';
 import {Subscription} from 'rxjs';
 import {PhotoDto} from '../model/photo-dto';
-import {finalize} from 'rxjs/operators';
+import {finalize, takeUntil} from 'rxjs/operators';
 import {BehaviorService} from '../services/behavior.service';
+import {GalleryService} from '../../gallery/service/gallery.service';
 
 @Component({
   selector: 'app-add-and-remove-photo',
@@ -22,8 +23,10 @@ export class AddAndRemovePhotoComponent implements OnInit, OnDestroy {
 
   constructor(
     private postingService: PostingService,
-    private behaviorService: BehaviorService
-  ) { }
+    private behaviorService: BehaviorService,
+    private galleryService: GalleryService
+  ) {
+  }
 
   ngOnInit(): void {
   }
@@ -38,37 +41,54 @@ export class AddAndRemovePhotoComponent implements OnInit, OnDestroy {
 
   onFileChange(files: any) {
     this.filesUpload.push(files[0]);
-    console.log('this.fileUpload', this.filesUpload);
   }
 
   sendPicToPosting() {
     for (const p of this.filesUpload) {
       const formData = new FormData();
       formData.append('image', p);
-      console.log(this.filesUpload);
-      console.log(p);
-      console.log('formData', formData);
-      this.subscriptions.push(this.postingService.sendPicToPosting(this.entityId, formData).pipe(
-        finalize(() => {
-          this.behaviorService.setPhotoSubject(true);
-        })
-      ).subscribe(res => {
-        console.log(res);
-      }));
+      if (this.type === 'micropost') {
+        this.subscriptions.push(this.postingService.sendPicToPosting(this.entityId, formData).pipe(
+          finalize(() => {
+            this.behaviorService.setPhotoSubject(true);
+          })
+        ).subscribe(res => {
+          console.log(res);
+        }));
+      } else if (this.type === 'gallery') {
+        this.subscriptions.push(this.galleryService.sendPicToGallery(this.entityId, formData).pipe(
+          finalize(() => {
+            this.behaviorService.setPhotoSubject(true);
+          })
+        ).subscribe(res => {
+          console.log(res);
+        }));
+      }
     }
   }
 
   delete(photo_id: string) {
     this.loading = true;
-    this.subscriptions.push(this.postingService.deletePhoto(this.entityId, photo_id).pipe(
-      finalize(() => {
-        this.behaviorService.setPhotoSubject(true);
-        this.loading = false;
-      })
-    ).subscribe( r => {
-        console.log('r r r r r r', r);
-      }
-    ));
+    if (this.type === 'micropost') {
+      this.subscriptions.push(this.postingService.deletePhoto(this.entityId, photo_id).pipe(
+        finalize(() => {
+          this.behaviorService.setPhotoSubject(true);
+          this.loading = false;
+        })
+      ).subscribe(r => {
+          console.log('r r r r r r', r);
+        }
+      ));
+    } else if (this.type === 'gallery') {
+      this.subscriptions.push(this.galleryService.deletePhoto(this.entityId, photo_id).pipe(
+        finalize(() => {
+          this.behaviorService.setPhotoSubject(true);
+          this.loading = false;
+        })
+      ).subscribe(r => {
+        console.log(r);
+      }));
+    }
   }
 
 }

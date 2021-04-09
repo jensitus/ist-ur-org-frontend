@@ -6,6 +6,7 @@ import {GalleryService} from '../service/gallery.service';
 import {Subject} from 'rxjs';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {PhotoDto} from '../../common/model/photo-dto';
+import {BehaviorService} from '../../common/services/behavior.service';
 
 @Component({
   selector: 'app-edit-gallery',
@@ -26,12 +27,14 @@ export class EditGalleryComponent implements OnInit, OnDestroy {
     private activatedRoute: ActivatedRoute,
     private galleryService: GalleryService,
     private formBuilder: FormBuilder,
-    private router: Router
+    private router: Router,
+    private behaviorService: BehaviorService
   ) {
   }
 
   ngOnInit(): void {
     this.getGalleryPhotos();
+    this.getNoticeWhenPhotoChanged();
   }
 
   getGalleryPhotos() {
@@ -114,6 +117,16 @@ export class EditGalleryComponent implements OnInit, OnDestroy {
   onFileChange(files: FileList): void {
     this.filesUpload.push(files[0]);
     console.log('this.fileUpload', this.filesUpload);
+  }
+
+  getNoticeWhenPhotoChanged() {
+    this.behaviorService.photoSubject.pipe(
+      takeUntil(this.destroy$)
+    ).subscribe(res => {
+      if (res === true) {
+        this.getGalleryPhotos();
+      }
+    });
   }
 
 }
