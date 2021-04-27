@@ -32,6 +32,7 @@ import { EditGalleryComponent } from './gallery/edit-gallery/edit-gallery.compon
 import { EditPostingComponent } from './posting/edit-posting/edit-posting.component';
 import { GrowingSpinnerComponent } from './common/growing-spinner/growing-spinner.component';
 import { AddAndRemovePhotoComponent } from './common/add-and-remove-photo/add-and-remove-photo.component';
+import { Url2linkPipe } from './common/pipes/url2link.pipe';
 
 @NgModule({
   declarations: [
@@ -55,7 +56,8 @@ import { AddAndRemovePhotoComponent } from './common/add-and-remove-photo/add-an
     EditGalleryComponent,
     EditPostingComponent,
     GrowingSpinnerComponent,
-    AddAndRemovePhotoComponent
+    AddAndRemovePhotoComponent,
+    Url2linkPipe
   ],
   imports: [
     BrowserModule,

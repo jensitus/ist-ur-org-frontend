@@ -23,7 +23,7 @@
     <div class="col-md-4"></div>
     <div class="col-md-4">
       <ng-container *ngIf="userToShow">
-        <img src="http://localhost:3000/{{userToShow.avatar}}" width="50%">
+        <img [src]="userToShow.avatar" width="50%">
       </ng-container>
     </div>
   </div>

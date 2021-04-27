@@ -1,7 +1,7 @@
-<div class="container-fluid">
+<div class="container">
   <div class="row">
-    <div class="col-md-4">
-      <app-sidebar></app-sidebar>
+    <div class="col-md-2">
+      <app-sidebar [postingUser]="postingUser"></app-sidebar>
     </div>
     <div class="col-md-6">
       <div *ngIf="micropost">
@@ -15,8 +15,7 @@
               </div>
             </div>
             <div class="row">
-              <div class="col-md-12">
-                {{micropost.content}}
+              <div class="col-md-12" [innerHTML]="micropost.content">
               </div>
             </div>
             <div class="row">
