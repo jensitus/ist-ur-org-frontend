@@ -4,6 +4,7 @@ import {PostingService} from '../services/posting.service';
 import {finalize, takeUntil} from 'rxjs/operators';
 import {UserService} from '../../user/services/user.service';
 import {Subject} from 'rxjs';
+import {User} from '../../user/model/user';
 
 @Component({
   selector: 'app-show-posting-list',
@@ -13,6 +14,7 @@ import {Subject} from 'rxjs';
 export class ShowPostingListComponent implements OnInit, OnDestroy {
 
   micropostMap: Map<number, Micropost[]>;
+  currentUser: User;
   microposts: Micropost[];
   micropost: Micropost;
   count: number;
@@ -29,6 +31,7 @@ export class ShowPostingListComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
+    this.getCurrentUser();
     this.getPostingList();
   }
 
@@ -69,6 +72,10 @@ export class ShowPostingListComponent implements OnInit, OnDestroy {
         });
       }
     }
+  }
+
+  private getCurrentUser() {
+    this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
   }
 
 }

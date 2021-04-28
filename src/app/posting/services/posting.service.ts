@@ -43,4 +43,9 @@ export class PostingService {
   deletePhoto(postingId: string, photo_id: string): Observable<any> {
     return this.http.delete(`${this.apiOrgUrl}/api/microposts/${postingId}/delete/${photo_id}`);
   }
+
+  getMicropostsByUser(user_id: string): Observable<Micropost[]> {
+    return this.http.get<Micropost[]>(`${this.apiOrgUrl}/api/microposts/${user_id}`);
+  }
+
 }
