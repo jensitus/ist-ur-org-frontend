@@ -40,9 +40,7 @@ export class ShowPostingComponent implements OnInit, OnDestroy {
     console.log('this.micropostId', this.micropostId);
     this.loading = true;
     this.getCurrentUser();
-    this.postingService.getById(this.micropostId).pipe(
-      takeUntil(this.notifier$),
-      finalize(() => {
+    this.postingService.getById(this.micropostId).pipe(takeUntil(this.notifier$), finalize(() => {
         this.getPostingUser();
         this.loading = false;
       })

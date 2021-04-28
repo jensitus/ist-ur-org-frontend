@@ -1,4 +1,20 @@
-<div class="card side">
+<div class="card mb-3" *ngIf="postingUser">
+  <div class="card-body">
+    <img [src]="postingUser.avatar" width="50%">
+    <div>
+      <p class="mt-2 mb-2">{{postingUser.name}}</p>
+    </div>
+  </div>
+</div>
+<div class="card mb-3" *ngIf="currentUser && !postingUser">
+  <div class="card-body">
+    <img [src]="currentUser.avatar" width="50%">
+    <div>
+      <p class="mt-2 mb-2">{{currentUser.name}}</p>
+    </div>
+  </div>
+</div>
+<div class="card">
   <div class="card-body">
     <div>
       <b>galleries:</b>
