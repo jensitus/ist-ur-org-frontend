@@ -45,7 +45,7 @@ export class PostingService {
   }
 
   getMicropostsByUser(user_id: string): Observable<Micropost[]> {
-    return this.http.get<Micropost[]>(`${this.apiOrgUrl}/api/microposts/${user_id}`);
+    return this.http.get<Micropost[]>(`${this.apiOrgUrl}/api/microposts/by_user_id/${user_id}`);
   }
 
 }

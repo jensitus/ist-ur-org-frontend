@@ -18,7 +18,9 @@ export class SingleMicropostComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    console.log('micropost_user: ', this.micropost_user_id, this.micropost_user_name);
+    setTimeout(() => {
+      console.log('micropost_user: ', this.micropost_user_id, this.micropost_user_name);
+    }, 500);
   }
 
 }

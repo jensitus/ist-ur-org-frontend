@@ -20,7 +20,7 @@
             <div [innerHTML]="p.content | url2linkPipe">
             </div>
             <div *ngFor="let photo of p.photos">
-              <img [src]="photo" width="100%">
+              <img [src]="photo.photo_url" width="100%">
             </div>
             <div>
               <small>{{p.username}} | {{p.created_at | date}} | <a [routerLink]="['/posting/' + p.id]">link</a> </small>

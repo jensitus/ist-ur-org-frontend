@@ -8,6 +8,7 @@ import {BehaviorService} from '../../common/services/behavior.service';
 import {PostingService} from '../../posting/services/posting.service';
 import {Subject} from 'rxjs';
 import {take, takeUntil} from 'rxjs/operators';
+import {Micropost} from '../../posting/model/Micropost';
 
 @Component({
   selector: 'app-show-user',
@@ -20,7 +21,7 @@ export class ShowUserComponent implements OnInit, OnDestroy {
   userId: string;
   userToShow: User;
   currentUser: User;
-  microposts: any;
+  microposts: Micropost[];
   private reload: boolean;
   private notifier$ = new Subject();
 
@@ -39,6 +40,7 @@ export class ShowUserComponent implements OnInit, OnDestroy {
     });
     this.getUserToShow();
     this.reloadUser();
+    this.getMicropostsForUser();
   }
 
   ngOnDestroy(): void {
@@ -67,9 +69,10 @@ export class ShowUserComponent implements OnInit, OnDestroy {
     });
   }
 
-  getMicropostsForUser(): any {
+  getMicropostsForUser(): void {
     this.postingService.getMicropostsByUser(this.userId).pipe(takeUntil(this.notifier$)).subscribe(m => {
       this.microposts = m;
+      console.log('micropostsToShow', this.microposts);
     });
   }
 
