@@ -1,6 +1,6 @@
 <div class="container-fluid">
   <div class="row">
-    <div class="col-md-4">
+    <div class="col-md-3">
       <div class="row">
         <div class="col">
           <ng-container *ngIf="userToShow">
@@ -20,7 +20,14 @@
       </div>
 
     </div>
-    <div class="col-md-4"></div>
+    <div class="col-md-5">
+      <div *ngFor="let m of microposts">
+        <app-single-micropost [micropost]="m" [micropost_user_name]="userToShow.name" [micropost_user_id]="m.user_id"></app-single-micropost>
+      </div>
+      <div>
+
+      </div>
+    </div>
     <div class="col-md-4">
       <ng-container *ngIf="userToShow">
         <img [src]="userToShow.avatar" width="50%">
