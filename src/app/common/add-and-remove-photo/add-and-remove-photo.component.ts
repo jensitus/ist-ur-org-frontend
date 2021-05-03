@@ -1,5 +1,5 @@
 import {Component, Input, OnDestroy, OnInit} from '@angular/core';
-import {PostingService} from '../../posting/services/posting.service';
+import {PostingService} from '../../micropost/services/posting.service';
 import {Subscription} from 'rxjs';
 import {PhotoDto} from '../model/photo-dto';
 import {finalize, takeUntil} from 'rxjs/operators';

@@ -40,7 +40,7 @@ export class EditPostingComponent implements OnInit, OnDestroy {
       switchMap((params) => this.postingService.getById(params.id))
       ).subscribe(post => {
         this.posting = post;
-        console.log('this.posting', this.posting);
+        console.log('this.micropost', this.posting);
         this.setUpdateForm();
         this.loading = false;
       })
@@ -70,7 +70,7 @@ export class EditPostingComponent implements OnInit, OnDestroy {
     }
     this.subscriptions.push(this.postingService.update(this.posting.id, this.updateForm.value).pipe(
       finalize(() => {
-        this.router.navigate(['/posting', this.posting.id]);
+        this.router.navigate(['/micropost', this.posting.id]);
         this.loading = false;
       })
     ).subscribe(() => {

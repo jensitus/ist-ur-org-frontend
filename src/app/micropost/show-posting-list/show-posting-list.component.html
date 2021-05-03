@@ -23,7 +23,7 @@
               <img [src]="photo.photo_url" width="100%">
             </div>
             <div>
-              <small>{{p.username}} | {{p.created_at | date}} | <a [routerLink]="['/posting/' + p.id]">link</a> </small>
+              <small>{{p.username}} | {{p.created_at | date}} | <a [routerLink]="['/micropost/' + p.id]">link</a> </small>
             </div>
           </div>
         </div>

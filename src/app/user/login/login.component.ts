@@ -50,6 +50,7 @@ export class LoginComponent implements OnInit, OnDestroy {
       })
     ).subscribe(data => {
       this.data = data;
+      console.log('this.data', this.data.user);
       localStorage.setItem('currentUser', JSON.stringify(this.data.user));
       this.alertService.success('Jesus Christ, you logged in successfully, how did you do that?', false);
       this.router.navigate(['/home']);

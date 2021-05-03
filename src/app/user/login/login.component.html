@@ -4,8 +4,13 @@
       <h4>Login</h4>
       <form #loginForm="ngForm" (ngSubmit)="onLogin()">
         <span>
-          <input id="float-input-username" class="form-control" [(ngModel)]="email" name="email" type="text">
+          <input id="float-input-email" class="form-control" [(ngModel)]="email" name="email" type="text">
           <label>email</label>
+        </span>
+        <br>
+        <span>
+          <input id="float-input-username" class="form-control" [(ngModel)]="username" name="username" type="text">
+          <label>username</label>
         </span>
         <br>
         <span>

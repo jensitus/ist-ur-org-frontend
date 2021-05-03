@@ -56,7 +56,7 @@ export class CreatePostingComponent implements OnInit, OnDestroy {
       })
     ).subscribe(result => {
       this.posting = result;
-      this.router.navigate(['/posting/' + this.posting.id]);
+      this.router.navigate(['/micropost/' + this.posting.id]);
     });
   }
 

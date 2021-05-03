@@ -13,6 +13,7 @@
           <ng-container *ngIf="userToShow">
             <div *ngIf="currentUser.id === userToShow.id">
               <app-upload [uploadType]="avatar"></app-upload>
+              <a [routerLink]="['/edit-user/user', currentUser.id]">edit</a>
             </div>
           </ng-container>
           <!--app-create-follower-ship [follower_id]="currentUser.id" [followed_id]="userToShow.id"></app-create-follower-ship-->

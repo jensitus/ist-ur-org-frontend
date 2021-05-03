@@ -62,4 +62,8 @@ export class UserService {
     return this.http.get<FollowerShip>(`${this.apiOrgUrl}/api/users/followership/follower/${follower_id}/followed/${followed_id}/`);
   }
 
+  updateUser(user: User): Observable<User> {
+    return this.http.put<User>(`${this.apiOrgUrl}/api/users/${user.id}/update`, user);
+  }
+
 }

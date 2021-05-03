@@ -22,7 +22,7 @@ export class AuthService {
   }
 
   forgotPassword(email: string) {
-    return this.http.post(this.apiOrgUrl + '/api/reset_password/create', email, {responseType: 'text'});
+    return this.http.post(this.apiOrgUrl + '/api/auth/reset_password/create', email, {responseType: 'text'});
   }
 
   resetPassword(user: User, token: string) {

@@ -5,10 +5,10 @@ import {UserService} from '../services/user.service';
 import {User} from '../model/user';
 import {UploadType} from '../../common/upload-type.enum';
 import {BehaviorService} from '../../common/services/behavior.service';
-import {PostingService} from '../../posting/services/posting.service';
+import {PostingService} from '../../micropost/services/posting.service';
 import {Subject} from 'rxjs';
 import {take, takeUntil} from 'rxjs/operators';
-import {Micropost} from '../../posting/model/Micropost';
+import {Micropost} from '../../micropost/model/Micropost';
 
 @Component({
   selector: 'app-show-user',

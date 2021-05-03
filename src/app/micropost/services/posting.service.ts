@@ -28,6 +28,11 @@ export class PostingService {
     return this.http.get(`${this.apiOrgUrl}/api/microposts` + '/' + limit + '/' + offset);
   }
 
+  // this is for testing with springboot backend:
+  // getAllPostings(): Observable<any> {
+  //   return this.http.get(`${this.apiOrgUrl}/api/microposts`);
+  // }
+
   getById(id: string): Observable<Micropost> {
     return this.http.get<Micropost>(`${this.apiOrgUrl}/api/microposts/${id}`);
   }

@@ -1,4 +1,4 @@
-import {PostingService} from './posting/services/posting.service';
+import {PostingService} from './micropost/services/posting.service';
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
@@ -13,13 +13,13 @@ import {JwtInterceptor} from './common/interceptor/jwt.interceptor';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {AuthService} from './auth/services/auth.service';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
-import {CreatePostingComponent} from './posting/create-posting/create-posting.component';
-import {ShowPostingComponent} from './posting/show-posting/show-posting.component';
-import {CreateCommentComponent} from './posting/create-comment/create-comment.component';
-import {CommentListComponent} from './posting/comment-list/comment-list.component';
+import {CreatePostingComponent} from './micropost/create-posting/create-posting.component';
+import {ShowPostingComponent} from './micropost/show-posting/show-posting.component';
+import {CreateCommentComponent} from './micropost/create-comment/create-comment.component';
+import {CommentListComponent} from './micropost/comment-list/comment-list.component';
 import {ErrorInterceptor} from './common/interceptor/error.interceptor';
 import {AppCommonModule} from './common/app-common/app-common.module';
-import {ShowPostingListComponent} from './posting/show-posting-list/show-posting-list.component';
+import {ShowPostingListComponent} from './micropost/show-posting-list/show-posting-list.component';
 import {CreateFollowerShipComponent} from './user/followerShip/create-follower-ship/create-follower-ship.component';
 import {DeleteFollowerShipComponent} from './user/followerShip/delete-follower-ship/delete-follower-ship.component';
 import {ShowUserComponent} from './user/show-user/show-user.component';
@@ -29,11 +29,11 @@ import {CreateGalleryComponent} from './gallery/create-gallery/create-gallery.co
 import {ShowGalleryComponent} from './gallery/show-gallery/show-gallery.component';
 import { SidebarComponent } from './common/sidebar/sidebar.component';
 import { EditGalleryComponent } from './gallery/edit-gallery/edit-gallery.component';
-import { EditPostingComponent } from './posting/edit-posting/edit-posting.component';
+import { EditPostingComponent } from './micropost/edit-posting/edit-posting.component';
 import { GrowingSpinnerComponent } from './common/growing-spinner/growing-spinner.component';
 import { AddAndRemovePhotoComponent } from './common/add-and-remove-photo/add-and-remove-photo.component';
 import { Url2linkPipe } from './common/pipes/url2link.pipe';
-import { SingleMicropostComponent } from './posting/single-micropost/single-micropost.component';
+import { SingleMicropostComponent } from './micropost/single-micropost/single-micropost.component';
 
 @NgModule({
   declarations: [

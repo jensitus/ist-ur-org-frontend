@@ -23,7 +23,7 @@
         <a [routerLink]="['/user/' + micropost_user_id]">{{micropost_user_name}}</a> | {{micropost.created_at | date}}
       </small>
       <small *ngIf="currentUser && currentUser.id == micropost_user_id">
-        | <a [routerLink]="['/posting/', micropost.id, 'edit']">edit</a>
+        | <a [routerLink]="['/micropost/', micropost.id, 'edit']">edit</a>
       </small>
     </div>
   </div>

@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {User} from '../../user/model/user';
 import {ModalDismissReasons, NgbModal} from '@ng-bootstrap/ng-bootstrap';
-import {PostingService} from '../../posting/services/posting.service';
-import {Micropost} from '../../posting/model/Micropost';
+import {PostingService} from '../../micropost/services/posting.service';
+import {Micropost} from '../../micropost/model/Micropost';
 import {CommonService} from '../services/common.service';
 import {UserService} from '../../user/services/user.service';
 import {MessageOrg} from '../model/MessageOrg';
