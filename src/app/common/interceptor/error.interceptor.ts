@@ -32,6 +32,8 @@ export class ErrorInterceptor implements HttpInterceptor {
         }
       } else if (err.status === 422) {
         this.alertService.error(err.status + ': ' + err.error.message, true);
+        this.router.navigate(['/login']).then(r => {
+        });
       } else if (err) {
         this.alertService.error(err.status + ': ' + err.error, true);
         this.router.navigate(['/login']).then(r => {

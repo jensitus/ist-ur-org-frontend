@@ -23,17 +23,16 @@ import {ShowPostingListComponent} from './micropost/show-posting-list/show-posti
 import {CreateFollowerShipComponent} from './user/followerShip/create-follower-ship/create-follower-ship.component';
 import {DeleteFollowerShipComponent} from './user/followerShip/delete-follower-ship/delete-follower-ship.component';
 import {ShowUserComponent} from './user/show-user/show-user.component';
-import {UploadComponent} from './common/upload/upload.component';
 import {ImageUploadComponent} from './common/image-upload/image-upload.component';
 import {CreateGalleryComponent} from './gallery/create-gallery/create-gallery.component';
 import {ShowGalleryComponent} from './gallery/show-gallery/show-gallery.component';
-import { SidebarComponent } from './common/sidebar/sidebar.component';
-import { EditGalleryComponent } from './gallery/edit-gallery/edit-gallery.component';
-import { EditPostingComponent } from './micropost/edit-posting/edit-posting.component';
-import { GrowingSpinnerComponent } from './common/growing-spinner/growing-spinner.component';
-import { AddAndRemovePhotoComponent } from './common/add-and-remove-photo/add-and-remove-photo.component';
-import { Url2linkPipe } from './common/pipes/url2link.pipe';
-import { SingleMicropostComponent } from './micropost/single-micropost/single-micropost.component';
+import {SidebarComponent} from './common/sidebar/sidebar.component';
+import {EditGalleryComponent} from './gallery/edit-gallery/edit-gallery.component';
+import {EditPostingComponent} from './micropost/edit-posting/edit-posting.component';
+import {GrowingSpinnerComponent} from './common/growing-spinner/growing-spinner.component';
+import {AddAndRemovePhotoComponent} from './common/add-and-remove-photo/add-and-remove-photo.component';
+import {Url2linkPipe} from './common/pipes/url2link.pipe';
+import {SingleMicropostComponent} from './micropost/single-micropost/single-micropost.component';
 
 @NgModule({
   declarations: [
@@ -49,7 +48,6 @@ import { SingleMicropostComponent } from './micropost/single-micropost/single-mi
     CreateFollowerShipComponent,
     DeleteFollowerShipComponent,
     ShowUserComponent,
-    UploadComponent,
     ImageUploadComponent,
     CreateGalleryComponent,
     ShowGalleryComponent,
@@ -77,6 +75,8 @@ import { SingleMicropostComponent } from './micropost/single-micropost/single-mi
     {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true},
     PostingService,
     AuthService
+  ],
+  exports: [
   ],
   bootstrap: [AppComponent]
 })

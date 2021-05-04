@@ -41,7 +41,7 @@ export class ShowPostingListComponent implements OnInit, OnDestroy {
 
   getPostingList(limit?: number, offset?: number) {
     this.loading = true;
-    this.postingService.getAllPostings().pipe(
+    this.postingService.getAllPostings(limit, offset).pipe(
       takeUntil(this.notifier$),
       finalize(() => this.loading = false)
     ).subscribe(result => {

@@ -6,6 +6,7 @@ import {switchMap} from 'rxjs/operators';
 import {Micropost} from '../../micropost/model/Micropost';
 import {User} from '../model/user';
 import {UserService} from '../services/user.service';
+import {UploadType} from '../../common/upload-type.enum';
 
 @Component({
   selector: 'app-edit-user',
@@ -14,6 +15,7 @@ import {UserService} from '../services/user.service';
 })
 export class EditUserComponent implements OnInit, OnDestroy {
 
+  avatar = UploadType.AVATAR;
   private subscriptions: Subscription[] = [];
   user: User;
 

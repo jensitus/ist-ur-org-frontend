@@ -8,6 +8,7 @@ import {UploadType} from '../upload-type.enum';
 import {CommonService} from '../services/common.service';
 import {BehaviorService} from '../services/behavior.service';
 import {UploadService} from '../services/upload.service';
+import {User} from '../../user/model/user';
 
 @Component({
   selector: 'app-upload',
@@ -16,13 +17,14 @@ import {UploadService} from '../services/upload.service';
 })
 export class UploadComponent implements OnInit, OnDestroy {
 
-  @Input()
-  private uploadType: string;
+  @Input() private uploadType: string;
+  @Input() currentUser: User;
 
   avatarForm: FormGroup;
   file: any;
   userId: string;
   fileToUpload: File;
+  private newCurrentUser;
 
   private unsubscribe$ = new Subject();
 
@@ -36,9 +38,7 @@ export class UploadComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    this.activatedRoute.params.pipe(
-      takeUntil(this.unsubscribe$)
-    ).subscribe(params => {
+    this.activatedRoute.params.pipe(takeUntil(this.unsubscribe$)).subscribe(params => {
       this.userId = params['id'];
     });
     this.getAvatarFormGroup();
@@ -66,7 +66,16 @@ export class UploadComponent implements OnInit, OnDestroy {
           this.behaviorService.setUploadSubject(true);
         })
       ).subscribe(data => {
-        console.log(data);
+        console.log('data', data);
+        this.newCurrentUser = {
+          id: data.id,
+          name: data.name,
+          access_token: this.currentUser.access_token,
+          email: data.email,
+          avatar: data.avatar
+        };
+        localStorage.setItem('currentUser', JSON.stringify(this.newCurrentUser));
+        this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
       });
     }
   }
