@@ -45,7 +45,6 @@ export class ShowPostingListComponent implements OnInit, OnDestroy {
       takeUntil(this.notifier$),
       finalize(() => this.loading = false)
     ).subscribe(result => {
-      console.log('result', result);
       this.micropostMap = result;
       this.count = result.count;
       this.microposts = result.microposts;
