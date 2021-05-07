@@ -33,6 +33,7 @@ import {GrowingSpinnerComponent} from './common/growing-spinner/growing-spinner.
 import {AddAndRemovePhotoComponent} from './common/add-and-remove-photo/add-and-remove-photo.component';
 import {Url2linkPipe} from './common/pipes/url2link.pipe';
 import {SingleMicropostComponent} from './micropost/single-micropost/single-micropost.component';
+import { ShowPhotoComponent } from './gallery/show-photo/show-photo.component';
 
 @NgModule({
   declarations: [
@@ -57,7 +58,8 @@ import {SingleMicropostComponent} from './micropost/single-micropost/single-micr
     GrowingSpinnerComponent,
     AddAndRemovePhotoComponent,
     Url2linkPipe,
-    SingleMicropostComponent
+    SingleMicropostComponent,
+    ShowPhotoComponent
   ],
   imports: [
     BrowserModule,
