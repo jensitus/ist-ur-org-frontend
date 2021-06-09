@@ -34,6 +34,7 @@ import {AddAndRemovePhotoComponent} from './common/add-and-remove-photo/add-and-
 import {Url2linkPipe} from './common/pipes/url2link.pipe';
 import {SingleMicropostComponent} from './micropost/single-micropost/single-micropost.component';
 import { ShowPhotoComponent } from './gallery/show-photo/show-photo.component';
+import { LinkifyPipe } from './common/pipes/linkify.pipe';
 
 @NgModule({
   declarations: [
@@ -59,7 +60,8 @@ import { ShowPhotoComponent } from './gallery/show-photo/show-photo.component';
     AddAndRemovePhotoComponent,
     Url2linkPipe,
     SingleMicropostComponent,
-    ShowPhotoComponent
+    ShowPhotoComponent,
+    LinkifyPipe
   ],
   imports: [
     BrowserModule,
