@@ -23,7 +23,7 @@
     "@angular/router": "^11.0.5",
     "@ng-bootstrap/ng-bootstrap": "^8.0.0",
     "core-js": "^2.5.4",
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "path": "^0.12.7",
     "rxjs": "~6.5.5",
     "tslib": "^2.0.0",
